@@ -15,6 +15,10 @@ var config = {
         print: './src/home.js'
     },
     devtool: 'inline-source-map',
+    // webpack-dev-server
+    // devServer: {
+    //     contentBase: './dist'
+    // },
     module: {
         rules: [
             // 跟js打包成一个chunk
@@ -72,7 +76,8 @@ var config = {
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     plugins: [
         // 清理之前打包代码
@@ -101,6 +106,43 @@ module.exports = config;
 * 当我们打包时形成一个或多个bundle文件，发生代码错误是指向的是包含错误代码的bundle而不是源文件位置。不利于定位错误。
 *
 * 解决：为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码
+*
+* 开发工具使用：代码更改后自动监控更改并打包的工具
+*   
+*   webpack's Watch Mode            webpack的观察模式
+*
+*       依赖图中的所有文件以进行更改。如果其中一个文件被更新，代码将被重新编译，所以你不必手动运行整个构建
+*       npm scripts中添加命令 webpack --watch 启动 webpack 的观察模式
+*       缺点：不能自动刷新浏览器
+*
+*   webpack-dev-server              插件提供一个简单的web服务器, 并且能够实时重新加载
+*
+*       安装：npm install --save-dev webpack-dev-server
+*       配置：{
+                    devServer: {
+                        contentBase: './dist'   // 告诉服务器从哪找文件
+                    }
+              }
+*       npm启动命令："start": "webpack-dev-server --open"
+*
+*   webpack-dev-middleware      一个容器, 可以把 webpack 处理后的文件传递给一个服务器, webpack-dev-server 在内部使用了它
+*                               同时，它也可以作为一个单独的包来使用，以便进行更多自定义设置来实现更多的需求,.
+*   webpack-dev-middleware 配合 express server使用： 编译后的资源文件都会保存在内存中
+*       当你使用ExtractTextPlugin时，因为这个插件本身的原因，修改css文件是不会更新的，所以在dev的时候可以不使用这个插件
+*       
+*       安装：npm install --save-dev express webpack-dev-middleware
+*       设置：publicPath: '/' 确保文件资源能够正确访问
+*       npm启动命令："server": "node server.js"
+*
+*   调整文本编辑器：
+*
+*       使用自动编译代码时，可能会在保存文件时遇到一些问题。某些编辑器具有“安全写入”功能，可能会影响重新编译
+*       
+*       Sublime Text 3 - 在用户首选项(user preferences)中添加 atomic_save: "false"。
+*       IntelliJ - 在首选项(preferences)中使用搜索，查找到 "safe write" 并且禁用它。
+*       Vim - 在设置(settings)中增加 :set backupcopy=yes。
+*       WebStorm - 在 Preferences > Appearance & Behavior > System Settings 中取消选中 Use "safe write"
+*
 * */
 
 
