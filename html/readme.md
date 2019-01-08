@@ -99,3 +99,26 @@ HTML5 浏览器支持：
     article,aside,dialog,footer,header,section,nav,figure,menu{display:block}
 
 
+HTML5 新元素：
+
+    <canvas> 新元素
+
+        <canvas>	标签定义图形，比如图表和其他图像。该标签基于 JavaScript 的绘图 API
+
+    新多媒体元素
+
+        <audio>	    定义音频内容
+        <video>	    定义视频（video 或者 movie）
+        <source>	定义多媒体资源 <video> 和 <audio>
+        <embed>	    定义嵌入的内容，比如插件。
+        <track>	    为诸如 <video> 和 <audio> 元素之类的媒介规定外部文本轨道。
+
+    新表单元素
+
+        <datalist>	定义选项列表。请与 input 元素配合使用该元素，来定义 input 可能的值。
+        <keygen>	规定用于表单的密钥对生成器字段。
+        <output>	定义不同类型的输出，比如脚本的输出。
+
+HTML5 Canvas：
+
+    <canvas> 标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形，浏览器支持性：ie9+、chrome4+、safari3.1+、firefox2+、opera9+
