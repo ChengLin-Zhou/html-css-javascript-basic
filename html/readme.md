@@ -568,3 +568,456 @@ HTML5 Web 存储：
 
         sessionStorage 对象：
             sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+
+
+HTML5 Web SQL 数据库：
+
+    * Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。
+    * Web SQL 数据库可以在最新版的 Safari, Chrome 和 Opera 浏览器中工作。
+
+    核心方法：
+
+        规范中定义的三个核心方法：
+
+            openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。
+            transaction：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。
+            executeSql：这个方法用于执行实际的 SQL 查询。
+
+        打开数据库:
+
+            可以使用 openDatabase() 方法来打开已存在的数据库，如果数据库不存在，则会创建一个新的数据库:
+
+                var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+
+            参数说明：
+
+                数据库名称、版本号、描述文本、数据库大小、创建回调
+
+        执行查询操作：
+
+            执行操作使用 database.transaction() 函数：
+
+                db.transaction(function (tx) {  
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+                });
+
+        插入数据:
+
+            db.transaction(function (tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+                tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+                tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+            });
+
+            也可以使用动态值来插入数据：
+            db.transaction(function (tx) {  
+                tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+                tx.executeSql('INSERT INTO LOGS (id,log) VALUES (?, ?)', [e_id, e_log]);
+            });
+
+        读取数据:
+
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+                    var len = results.rows.length, i;
+                    msg = "<p>查询记录条数: " + len + "</p>";
+                    document.querySelector('#status').innerHTML +=  msg;
+                    
+                    for (i = 0; i < len; i++){
+                        alert(results.rows.item(i).log );
+                    }
+                    
+                }, null);
+            });
+
+        删除记录：
+
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+            });
+
+            删除指定的数据id也可以是动态的：
+            db.transaction(function(tx) {
+                tx.executeSql('DELETE FROM LOGS WHERE id=?', [id]);
+            });
+
+        更新记录：
+
+            db.transaction(function (tx) {
+                tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2');
+            });
+
+            更新指定的数据id也可以是动态的：
+            db.transaction(function(tx) {
+                tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=?', [id]);
+            });
+
+
+HTML5 应用程序缓存:
+
+    使用 HTML5，通过创建 cache manifest 文件，可以轻松地创建 web 应用的离线版本。
+
+    什么是应用程序缓存：
+
+        HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问。
+
+        应用程序缓存为应用带来三个优势：
+
+            离线浏览 - 用户可在应用离线时使用它们
+            速度 - 已缓存资源加载得更快
+            减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
+        浏览器支持：IE10, Firefox, Chrome, Safari 和 Opera 支持应用程序缓存。
+
+    Cache Manifest 基础：
+
+        如需启用应用程序缓存，请在文档的<html> 标签中包含 manifest 属性：
+            <!DOCTYPE HTML>
+            <html manifest="demo.appcache">
+            ...
+            </html>
+
+            * 每个指定了 manifest 的页面在用户对其访问时都会被缓存。如果未指定 manifest 属性，则页面不会被缓存（除非在 manifest 文件中直接指定了该页面）。
+            * manifest 文件的建议的文件扩展名是：".appcache"。
+            * manifest 文件需要配置正确的 MIME-type，即 "text/cache-manifest"。必须在 web 服务器上进行配置。
+
+    Manifest 文件：
+
+        manifest 文件是简单的文本文件，它告知浏览器被缓存的内容（以及不缓存的内容）。
+
+        manifest 文件可分为三个部分：
+
+            CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+            NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+            FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+
+        CACHE MANIFEST：
+
+            第一行，CACHE MANIFEST，是必需的：
+
+            CACHE MANIFEST
+            /theme.css
+            /logo.gif
+            /main.js
+
+            上面的 manifest 文件列出了三个资源：一个 CSS 文件，一个 GIF 图像，以及一个 JavaScript 文件。当 manifest 文件加载后，浏览器会从网站的根目录下载这三个文件。然后，无论用户何时与因特网断开连接，这些资源依然是可用的。
+
+        NETWORK：
+
+            下面的 NETWORK 小节规定文件 "login.php" 永远不会被缓存，且离线时是不可用的：
+
+            NETWORK:
+            login.php
+
+            可以使用星号来指示所有其他资源/文件都需要因特网连接：
+
+            NETWORK:
+            *
+
+        FALLBACK：
+
+            下面的 FALLBACK 小节规定如果无法建立因特网连接，则用 "offline.html" 替代 /html5/ 目录中的所有文件：
+
+            FALLBACK:
+            /html/ /offline.html
+
+            注意: 第一个 URI 是资源，第二个是替补。
+
+    更新缓存：
+
+        一旦应用被缓存，它就会保持缓存直到发生下列情况：
+
+        用户清空浏览器缓存
+        manifest 文件被修改（参阅下面的提示）
+        由程序来更新应用缓存
+
+    完整的 Manifest 文件：
+
+        CACHE MANIFEST
+        # 2012-02-21 v1.0.0
+        /theme.css
+        /logo.gif
+        /main.js
+
+        NETWORK:
+        login.php
+
+        FALLBACK:
+        /html/ /offline.html
+
+        提示：以 "#" 开头的是注释行，但也可满足其他用途。应用的缓存会在其 manifest 文件更改时被更新。如果您编辑了一幅图片，或者修改了一个 JavaScript 函数，这些改变都不会被重新缓存。更新注释行中的日期和版本号是一种使浏览器重新缓存文件的办法。
+
+    关于应用程序缓存的说明：
+
+        一旦文件被缓存，则浏览器会继续展示已缓存的版本，即使您修改了服务器上的文件。为了确保浏览器更新缓存，您需要更新 manifest 文件。
+
+        注意: 浏览器对缓存数据的容量限制可能不太一样（某些浏览器设置的限制是每个站点 5MB）。
+
+
+HTML5 Web Workers： 
+
+    web worker 是运行在后台的 JavaScript，不会影响页面的性能。
+
+    什么是 Web Worker：
+
+        当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。
+
+        web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
+
+    浏览器支持：
+
+        IE10, Firefox, Chrome, Safari 和 Opera 都支持Web workers。
+
+    检测浏览器是否支持 Web Worker：
+
+        if(typeof(Worker)!=="undefined")
+        {
+            // 是的! Web worker 支持!
+        }
+        else
+        {
+            //抱歉! Web Worker 不支持 
+        }
+
+    创建 web worker 文件：
+
+        var i=0;
+
+        function timedCount()
+        {
+            i=i+1;
+            postMessage(i);
+            setTimeout("timedCount()",500);
+        }
+
+        timedCount();
+
+        重要的部分是 postMessage() 方法 - 它用于向 HTML 页面传回一段消息。
+        注意: web worker 通常不用于如此简单的脚本，而是用于更耗费 CPU 资源的任务。
+
+    创建 Web Worker 对象：
+
+        var w=new Worker("demo_workers.js");
+
+        然后可以从 web worker 发生和接收消息了。
+        向 web worker 添加一个 "onmessage" 事件监听器：
+
+        w.onmessage=function(event){
+            dconsole.log(event.data);
+        };
+
+    终止 Web Worker：
+
+        创建 web worker 对象后，它会继续监听消息（即使在外部脚本完成之后）直到其被终止为止。
+        如需终止 web worker，并释放浏览器/计算机资源，请使用 terminate() 方法：
+
+        w.terminate();
+        w = undefined; // 释放w变量内存
+
+    Web Workers 和 DOM：
+
+        由于 web worker 位于外部文件中，它们无法访问下列 JavaScript 对象：
+
+        window 对象
+        document 对象
+        parent 对象
+
+
+HTML5 服务器发送事件(Server-Sent Events)：
+
+    HTML5 服务器发送事件（server-sent event）允许网页获得来自服务器的更新。
+
+    Server-Sent 事件 - 单向消息传递：
+
+        Server-Sent 事件指的是网页自动获取来自服务器的更新。
+        以前也可能做到这一点，前提是网页不得不询问是否有可用的更新。通过服务器发送事件，更新能够自动到达。
+
+    浏览器支持：
+
+        所有主流浏览器均支持服务器发送事件，除了 IE。
+
+    接收 Server-Sent 事件通知：
+
+        var source=new EventSource("demo_sse.php");
+        source.onmessage=function(event)
+        {
+            console.log(event.data);
+        };
+
+        创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 "demo_sse.php"）
+        每接收到一次更新，就会发生 onmessage 事件
+        当 onmessage 事件发生时，把已接收的数据推入 id 为 "result" 的元素中
+
+    检测 Server-Sent 事件支持：
+
+        if(typeof(EventSource)!=="undefined")
+        {
+            // 浏览器支持 Server-Sent
+        }
+        else
+        {
+            // 浏览器不支持 Server-Sent..
+        }
+
+    服务器端代码实例:
+
+        * 为了让上面的例子可以运行，您还需要能够发送数据更新的服务器（比如 PHP 和 ASP）。
+        * 服务器端事件流的语法是非常简单的。把 "Content-Type" 报头设置为 "text/event-stream"。现在，您可以开始发送事件流了。
+
+    EventSource 对象：
+
+        onopen	    当通往服务器的连接被打开
+        onmessage	当接收到消息
+        onerror	    当发生错误
+
+
+HTML5 WebSocket：
+
+    * WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。
+    * WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。
+    * 在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。
+    * 现在很多网站为了实现推送技术，所用的技术都是 Ajax 轮询。轮询是在特定的的时间间隔，由浏览器对服务器发出HTTP请求，然后由服务器返回最新的数据给客户端的浏览器。这种传统的模式带来很明显的缺点，即浏览器需要不断的向服务器发出请求，然而HTTP请求可能包含较长的头部，其中真正有效的数据可能只是很小的一部分，显然这样会浪费很多的带宽等资源。
+    * WebSocket 协议，能更好的节省服务器资源和带宽，并且能够更实时地进行通讯。
+
+    浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据：通过 send() 方法来向服务器发送数据，并通过 onmessage 事件来接收服务器返回的数据。
+
+    创建 WebSocket 对象：
+
+        var Socket = new WebSocket(url, [protocol] );
+        url, 指定连接的 URL。参数 protocol 是可选的，指定了可接受的子协议。
+
+    WebSocket 属性：
+
+        Socket.readyState	
+
+            只读属性 readyState 表示连接状态，可以是以下值：
+
+            0 - 表示连接尚未建立。
+
+            1 - 表示连接已建立，可以进行通信。
+
+            2 - 表示连接正在进行关闭。
+
+            3 - 表示连接已经关闭或者连接不能打开。
+
+        Socket.bufferedAmount
+
+            只读属性 bufferedAmount 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数。
+
+    WebSocket 事件：
+
+        
+        事件	    事件处理程序	        描述
+        open	    Socket.onopen	    连接建立时触发
+        message	    Socket.onmessage	客户端接收服务端数据时触发
+        error	    Socket.onerror	    通信发生错误时触发
+        close	    Socket.onclose	    连接关闭时触发
+
+    WebSocket 方法：
+
+        Socket.send()	使用连接发送数据
+        Socket.close()	关闭连接
+
+    WebSocket 实例：
+
+        WebSocket 协议本质上是一个基于 TCP 的协议。
+        建立一个 WebSocket 连接：
+
+            * 客户端浏览器首先要向服务器发起一个 HTTP 请求，这个请求和通常的 HTTP 请求不同，包含了一些附加头信息，其中附加头信息"Upgrade: WebSocket"表明这是一个申请协议升级的 HTTP 请求
+            * 服务器端解析这些附加的头信息然后产生应答信息返回给客户端，客户端和服务器端的 WebSocket 连接就建立起来了，双方就可以通过这个连接通道自由的传递信息，并且这个连接会持续存在直到客户端或者服务器端的某一方主动的关闭连接。
+
+        客户端的 HTML 和 JavaScript： 
+
+            目前大部分浏览器支持 WebSocket() 接口，你可以在以下浏览器中尝试实例： Chrome, Mozilla, Opera 和 Safari：
+
+                function WebSocketTest()
+                {
+                    if ("WebSocket" in window)
+                    {
+                    alert("您的浏览器支持 WebSocket!");
+                    
+                    // 打开一个 web socket
+                    var ws = new WebSocket("ws://localhost:9998/echo");
+                        
+                    ws.onopen = function()
+                    {
+                        // Web Socket 已连接上，使用 send() 方法发送数据
+                        ws.send("发送数据");
+                        alert("数据发送中...");
+                    };
+                        
+                    ws.onmessage = function (evt) 
+                    { 
+                        var received_msg = evt.data;
+                        alert("数据已接收...");
+                    };
+                        
+                    ws.onclose = function()
+                    { 
+                        // 关闭 websocket
+                        alert("连接已关闭..."); 
+                    };
+                    }
+                    
+                    else
+                    {
+                    // 浏览器不支持 WebSocket
+                    alert("您的浏览器不支持 WebSocket!");
+                    }
+                }
+
+    安装 pywebsocket：
+
+        实现未必websocket连接需要创建一个支持 WebSocket 的服务。从 pywebsocket 下载 mod_pywebsocket：
+
+            git clone https://github.com/google/pywebsocket.git
+
+        mod_pywebsocket 需要 python 环境支持
+        mod_pywebsocket 是一个 Apache HTTP 的 Web Socket扩展，安装步骤如下：
+
+        解压下载的文件。
+        进入 pywebsocket 目录。
+        执行命令：
+
+        $ python setup.py build
+        $ sudo python setup.py install
+
+        查看文档说明:
+
+        $ pydoc mod_pywebsocket
+
+    开启服务：
+
+        在 pywebsocket/mod_pywebsocket 目录下执行以下命令：
+
+            $ sudo python standalone.py -p 9998 -w ../example/
+            
+        会开启一个端口号为 9998 的服务，使用 -w 来设置处理程序 echo_wsh.py 所在的目录。
+
+    
+    一个典型的Websocket握手请求如下：
+
+        客户端请求
+
+        GET / HTTP/1.1
+        Upgrade: websocket
+        Connection: Upgrade
+        Host: example.com
+        Origin: http://example.com
+        Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ==
+        Sec-WebSocket-Version: 13
+        服务器回应
+
+        HTTP/1.1 101 Switching Protocols
+        Upgrade: websocket
+        Connection: Upgrade
+        Sec-WebSocket-Accept: fFBooB7FAkLlXgRSz0BT3v4hq5s=
+        Sec-WebSocket-Location: ws://example.com/
+
+        * Connection 必须设置 Upgrade，表示客户端希望连接升级。
+        * Upgrade 字段必须设置 Websocket，表示希望升级到 Websocket 协议。
+        * Sec-WebSocket-Key 是随机的字符串，服务器端会用这些数据来构造出一个 SHA-1 的信息摘要。把 “Sec-WebSocket-Key” 加上一个特殊字符串 “258EAFA5-E914-47DA-95CA-C5AB0DC85B11”，然后计算 SHA-1 摘要，之后进行 BASE-64 编码，将结果做为 “Sec-WebSocket-Accept” 头的值，返回给客户端。如此操作，可以尽量避免普通 HTTP 请求被误认为 Websocket 协议。
+        * Sec-WebSocket-Version 表示支持的 Websocket 版本。RFC6455 要求使用的版本是 13，之前草案的版本均应当弃用。
+        * Origin 字段是可选的，通常用来表示在浏览器中发起此 Websocket 连接所在的页面，类似于 Referer。但是，与 * Referer 不同的是，Origin 只包含了协议和主机名称。
+        其他一些定义在 HTTP 协议中的字段，如 Cookie 等，也可以在 Websocket 中使用。
+        在服务器方面，网上都有不同对websocket支持的服务器，不同的后台语言支持。
