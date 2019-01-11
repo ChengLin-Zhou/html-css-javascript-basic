@@ -510,3 +510,159 @@ HTML 基本文档
     &lt; 等同于 <
     &gt; 等同于 >
     &#169; 等同于 ©
+
+
+
+
+
+HTML 多媒体：
+
+    Web 上的多媒体指的是音效、音乐、视频和动画。
+    现代网络浏览器已支持很多多媒体格式。
+
+    什么是多媒体：
+
+        多媒体来自多种不同的格式。它可以是您听到或看到的任何内容，文字、图片、音乐、音效、录音、电影、动画等。
+
+    多媒体格式：
+
+        格式 多媒体元素（比如视频和音频）存储于媒体文件中。
+        确定媒体类型的最常用的方法是查看文件扩展名。
+        多媒体元素元素也拥有带有不同扩展名的文件格式，比如 .swf、.wmv、.mp3 以及 .mp4。
+
+    视频格式：
+
+        MP4是互联网推出新的视频格式。
+        YouTube 推荐使用 MP4 。
+        Flash Players 支持 MP4
+        HTML5 支持 MP4。 
+
+HTML 插件：
+
+    插件的功能是扩展 HTML 浏览器的功能。
+
+    HTML 助手（插件）：
+
+        * 辅助应用程序是可由浏览器启动的程序。辅助应用程序也称为插件。
+        * 辅助程序可用于播放音频和视频（以及其他）。辅助程序是使用 <object> 标签来加载的。
+        * 使用辅助程序播放视频和音频的一个优势是，您能够允许用户来控制部分或全部播放设置。
+        * 插件可以通过 <object> 标签或者 <embed> 标签添加在页面中。 
+        * 大多数辅助应用程序允许对音量设置和播放功能（比如后退、暂停、停止和播放）的手工（或程序的）控制。
+
+    <object> 元素：
+
+        所有主流浏览器都支持 <object> 标签。
+        <object> 元素定义了在 HTML 文档中嵌入的对象。
+        该标签用于插入对象 (例如在网页中嵌入 Java 小程序, PDF 阅读器, Flash 播放器) 。
+
+        例：
+            <object width="400" height="50" data="bookmark.swf"></object>
+
+            同样可用于包含HTML文件：
+            <object width="100%" height="500px" data="snippet.html"></object>
+
+            插入一张图片:
+            <object data="audi.jpeg"></object>
+
+    <embed> 元素：
+
+        * 所有主流浏览器都支持 <embed> 元素。
+        * <embed> 元素表示一个 HTML Embed 对象 。
+        * <embed> 元素已经出现很长一段时间了，但是在 HTML5 前并未被详细说明，该元素在 HTML 5 页面上会被验证，在 HTML 4 上不会。
+
+        例：
+            <embed width="400" height="50" src="bookmark.swf">
+
+            同样可用于包含 HTML 文件：
+            <embed width="100%" height="500px" src="snippet.html">
+
+            插入一张图片:
+            <embed src="audi.jpeg">
+
+
+HTML 音频(Audio)：
+
+    * 声音在HTML中可以以不同的方式播放。
+    * 在 HTML 中播放音频并不容易。
+    * 您需要谙熟大量技巧，以确保您的音频文件在所有浏览器中（IE, Chrome, Firefox, Safari, Opera）和所有硬件上（PC, Mac , iPad, iPhone）都能够播放。
+
+    使用插件：
+
+        浏览器插件是一种扩展浏览器标准功能的小型计算机程序。
+        插件可以使用 <object> 标签 或者 <embed> 标签添加在页面上。
+        这些标签定义资源（通常非 HTML 资源）的容器，根据类型，它们即会由浏览器显示，也会由外部插件显示。
+
+    使用 <object> 元素、使用 <embed> 元素：
+
+        是一个 HTML5 元素，在 HTML 4 中是非法的，但在所有浏览器中都有效。
+        标签在 HTML 4 中是无效的。页面无法通过 HTML 4 验证。
+        不同的浏览器对音频格式的支持也不同。
+        如果浏览器不支持该文件格式，没有插件的话就无法播放该音频。
+        如果用户的计算机未安装插件，无法播放音频。
+        如果把该文件转换为其他格式，仍然无法在所有浏览器中播放。
+
+    使用 HTML5 <audio> 元素：
+
+        HTML5 <audio> 元素是一个 HTML5 元素，在 HTML 4 中是非法的，但在所有浏览器中都有效。
+        <audio> 标签在 HTML 4 中是无效的。您的页面无法通过 HTML 4 验证。
+        您必须把音频文件转换为不同的格式。
+        <audio> 元素在老式浏览器中不起作用。
+
+    最好的 HTML 解决方法：
+
+        HTML5 <audio> 元素会尝试以 mp3 或 ogg 来播放音频。如果失败，代码将回退尝试 <embed> 元素：
+
+            <audio controls height="100" width="100">
+                <source src="horse.mp3" type="audio/mpeg">
+                <source src="horse.ogg" type="audio/ogg">
+                <embed height="50" width="100" src="horse.mp3">
+            </audio>
+
+    使用超链接：
+
+        如果网页包含指向媒体文件的超链接，大多数浏览器会使用"辅助应用程序"来播放文件。
+        <a href="horse.mp3">Play the sound</a>
+
+    内联的声音说明：
+
+        * 当您在网页中包含声音，或者作为网页的组成部分时，它被称为内联声音。
+        * 如果您打算在 web 应用程序中使用内联声音，您需要意识到很多人都觉得内联声音令人恼火。同时请注意，用户可能已经关闭了浏览器中的内联声音选项。
+        * 我们最好的建议是只在用户希望听到内联声音的地方包含它们。一个正面的例子是，在用户需要听到录音并点击某个链接时，会打开页面然后播放录音。
+
+HTML 视频（Videos）：
+
+    最好的 HTML 解决方法：
+    <video width="320" height="240" controls>
+        <source src="movie.mp4" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+        <source src="movie.webm" type="video/webm">
+        <object data="movie.mp4" width="320" height="240">
+            <embed src="movie.swf" width="320" height="240">
+        </object> 
+    </video>
+
+    使用 <embed> 标签\使用 <object> 标签：
+
+        HTML4 无法识别 <embed> 标签。您的页面无法通过验证。
+        如果浏览器不支持 Flash，那么视频将无法播放
+        iPad 和 iPhone 不能显示 Flash 视频。
+        如果您将视频转换为其他格式，那么它仍然不能在所有浏览器中播放。
+
+    优酷解决方案：
+
+        * 在 HTML 中显示视频的最简单的方法是使用优酷等视频网站。
+        * 如果您希望在网页中播放视频，那么您可以把视频上传到优酷等视频网站，然后在您的网页中插入 HTML 代码即可播放视频。
+        * 你可以在各大视频网站的分享入口，找到嵌入的 HTML 代码。
+
+    使用超链接：
+
+        如果网页包含指向媒体文件的超链接，大多数浏览器会使用"辅助应用程序"来播放文件。
+        <a href="intro.swf">Play a video file</a>
+
+
+
+
+
+
+练习所有内容：http://www.runoob.com/tags/ref-standardattributes.html
+

@@ -1021,3 +1021,5 @@ HTML5 WebSocket：
         * Origin 字段是可选的，通常用来表示在浏览器中发起此 Websocket 连接所在的页面，类似于 Referer。但是，与 * Referer 不同的是，Origin 只包含了协议和主机名称。
         其他一些定义在 HTTP 协议中的字段，如 Cookie 等，也可以在 Websocket 中使用。
         在服务器方面，网上都有不同对websocket支持的服务器，不同的后台语言支持。
+
+        Socket 是传输控制层协议，WebSocket 是应用层协议。
