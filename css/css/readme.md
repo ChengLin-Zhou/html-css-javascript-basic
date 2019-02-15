@@ -350,3 +350,351 @@ CSS 边框属性：
     border-top-color	设置元素的上边框的颜色。
     border-top-style	设置元素的上边框的样式。
     border-top-width	设置元素的上边框的宽度。
+
+css轮廓：
+
+    * 轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+    * 轮廓（outline）属性指定元素轮廓的样式、颜色和宽度。
+    * 所有CSS 轮廓（outline）属性：
+
+        outline	在一个声明中设置所有的轮廓属性	
+            outline-color
+            outline-style
+            outline-width
+            inherit	
+
+        outline-color	设置轮廓的颜色	
+            color-name
+            hex-number
+            rgb-number
+            invert
+            inherit	
+        outline-style	设置轮廓的样式
+            none
+            dotted
+            dashed
+            solid
+            double
+            groove
+            ridge
+            inset
+            outset
+            inherit
+        outline-width	设置轮廓的宽度
+            thin
+            medium
+            thick
+            length
+            inherit
+
+    * outline是不占空间的，既不会增加额外的width或者height（这样不会导致浏览器渲染时出现reflow或是  repaint）
+    * outline有可能是非矩形的（火狐浏览器下）
+
+CSS margin(外边距)：
+
+    * 属性定义元素周围的空间
+    * 可能的值
+        auto	设置浏览器边距。这样做的结果会依赖于浏览器
+        length	定义一个固定的margin（使用像素，pt，em等）
+        %	    定义一个使用百分比的边距
+        Margin可以使用负值，重叠的内容
+    * 单边外边距属性
+        可以指定不同的侧面不同的边距：
+            margin-top:100px;
+            margin-bottom:100px;
+            margin-right:50px;
+            margin-left:50px;
+
+    * 简写属性: 
+        margin: value1(上下) value2(左右);
+        margin: value1(上) value2(左右) value3(下)
+        margin: value1(上) value2(右) value3(下) value4(左)
+        margin: value(上下左右)
+
+CSS padding（填充）：
+
+    * 是一个简写属性，定义元素边框与元素内容之间的空间，即上下左右的内边距
+    * 填充区域将会受到元素背景颜色的填充
+    * 可能的值：
+        length	定义一个固定的填充(像素, pt, em,等)
+        %	    使用百分比值定义一个填充    
+    * 单边内边距属性：
+        padding-top:25px;
+        padding-bottom:25px;
+        padding-right:50px;
+        padding-left:50px;
+        
+    * 简写属性: 同margin
+    * 设置负值无效
+    * 对于margin和padding百分比按照父元素的宽计算，只发生在默认的writing-mode: horizontal-tb; 和direction: ltr; 的情况下。当书写模式变为纵向时，参照会变成包含块的高度。对于定位元素备份比是按照定位了的父元素来计算(未定位的父元素会被跳过)。
+
+CSS 分组 和 嵌套 选择器：
+
+    1. 分组选择器
+
+        * 样式表中很多具有相同样式的元素，为了减少代码，可使用分组选择器
+        * 例：h1,p,h2 {colot: green;}
+
+    2. 嵌套选择器
+
+        * 它可能适用于选择器内部的选择器的样式。
+        * 例：
+            p{ }: 为所有 p 元素指定一个样式。
+            .marked{ }: 为所有 class="marked" 的元素指定一个样式。
+            .marked p{ }: 为所有 class="marked" 元素内的 p 元素指定一个样式。
+            p.marked{ }: 为所有 class="marked" 的 p 元素指定一个样式。
+
+CSS 尺寸：
+    * CSS 尺寸 (Dimension) 属性允许你控制元素的高度和宽度。同样，它允许你增加行间距
+    * 所有CSS 尺寸 (Dimension)属性：
+        height	    设置元素的高度。
+        line-height	设置行高。
+        max-height	设置元素的最大高度。
+        max-width	设置元素的最大宽度。
+        min-height	设置元素的最小高度。
+        min-width	设置元素的最小宽度。
+        width	    设置元素的宽度。
+
+CSS Display(显示) 与 Visibility（可见性）：
+    * display属性设置一个元素应如何显示，visibility属性指定一个元素应可见还是隐藏
+    * 隐藏元素：
+        两种方法会产生不同的结果：display:none或visibility:hidden
+        隐藏后不占用空间不影响布局：display:none
+        隐藏后仍占用空间影响布局：visibility:hidden
+    
+    * Display - 块和内联元素：
+        块元素是一个元素，占用了全部宽度，在前后都是换行符(宽高内外边距都可控)
+        内联元素只需要必要的宽度，不强制换行(宽高内外边距都不可变)
+        display: inline(内联) | block(块级) | inline-block(行内块)
+
+CSS Position(定位)：
+
+    * position 属性指定了元素的定位类型
+    * 五个值：
+        static          默认值，遵循正常文档流对象
+        relative        相对定位元素的定位是相对其他正常位置，所占空间不会改变
+        fixed           元素位置相对于浏览器窗口是固定位置，不随窗口滚动而移动，不占据空间会和其他元素                 重叠，在ie7-8下需描述doctype才能支持
+        absolute        绝对定位，位置相对于最近的已定位元素，无定位父元素相对于html，不占空间，和元                  素重叠
+        sticky          粘性定位，基于用户的滚动位置来定位。依赖于用户的滚动，在 position:relative                   与 position:fixed 定位之间切换。它的行为就像 position:relative; 而当页面滚                 动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。元素定位                 表现为在跨越特定阈值前为相对定位，之后为固定定位。这个特定阈值指的是 top,                     right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个                  阈值其中之一，才可使粘性定位生效
+    * 重叠的元素:
+        元素的定位与文档流无关，所以它们可以覆盖页面上的其它元素
+        z-index属性指定了一个元素的堆叠顺序
+        具有更高堆叠顺序的元素总是在较低的堆叠顺序元素的前面
+
+CSS 布局 - Overflow：
+
+    * 可以控制内容溢出元素框时在对应的元素区间内添加滚动条
+    * 属性有以下值：
+        visible	默认值。内容不会被修剪，会呈现在元素框之外。
+        hidden	内容会被修剪，并且其余内容是不可见的。
+        scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+        auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+        inherit	规定应该从父元素继承 overflow 属性的值。
+    * overflow 属性只工作于指定高度的块元素上
+
+CSS Float(浮动)：
+
+   * 会使元素向左或向右移动，其周围的元素也会重新排列。
+   * 往往是用于图像，但它在布局时一样非常有用
+   * 元素的水平方向浮动，意味着元素只能左右移动而不能上下移动
+   * 一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止
+   * 浮动元素之后的元素将围绕它。浮动元素之前的元素将不会受到影响
+   * 彼此相邻的浮动元素：
+        如果你把几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻
+   * 清除浮动 - 使用 clear
+
+CSS 布局 - 水平 & 垂直对齐：
+    
+    * 元素居中对齐
+        设置元素宽度
+        设置外边距margin: auto
+    * 文本居中对齐
+        设置text-align: center
+    * 图片居中对齐
+        设置图片为块元素
+        设置margin: auto
+    * 左右对齐-使用定位方式
+        使用position: absolute;属性来对齐元素
+    * 左右对齐-float方式
+        设置float: right;
+    * 垂直居中对齐-使用padding
+        使用padding: 20px
+    * 垂直居中对齐-使用line-height
+        首先设置高度height: 200px
+        使用line-height: 200px
+        如果多行文本：
+        display: inle-block;
+        line-height: 1.5;
+        vertical-align: middle;
+    * 垂直居中 - 使用 position 和 transform
+        .center { 
+            height: 200px;
+            position: relative;
+            border: 3px solid green; 
+        }
+        
+        .center p {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+CSS 组合选择符：
+
+    * CSS组合选择符包括各种简单选择符的组合方式。
+    * 在 CSS3 中包含了四种组合方式:
+        1. 后代选择器(以空格分隔)
+            后代选择器用于选取某元素的后代元素
+            例：div p {}    div元素中的p元素
+        2. 子元素选择器(以大于号分隔）
+            与后代选择器相比，子元素选择器（Child selectors）只能选择作为某元素子元素的元素
+            例：div>p {}    div元素中所有直接子元素
+        3. 相邻兄弟选择器（以加号分隔）
+            可选择紧接在另一元素后的元素，且二者有相同父元素
+            例：div+p {}    div元素后的第一个p元素
+        4. 普通兄弟选择器（以破折号分隔）
+            后续兄弟选择器选取所有指定元素之后的相邻兄弟元素
+            例：div~p {}    div元素之后的所有相邻兄弟元素p
+
+CSS 伪类(Pseudo-classes)：
+
+    * 伪类是用来添加一些选择器的特殊效果
+    * anchor伪类：
+        a:link {color:#FF0000;} /* 未访问的链接 */
+        a:visited {color:#00FF00;} /* 已访问的链接 */
+        a:hover {color:#FF00FF;} /* 鼠标划过链接 */
+        a:active {color:#0000FF;} /* 已选中的链接 */
+    * 伪类和CSS类：
+        伪类可以与 CSS 类配合使用：a.red:visited {color:#FF0000;}
+    * :first-child 伪类
+        使用 :first-child 伪类来选择父元素的第一个子元素。
+        注意：在IE8的之前版本必须声明<!DOCTYPE> ，这样 :first-child 才能生效
+    * CSS - :lang 伪类
+        :lang 伪类使你有能力为不同的语言定义特殊的规则
+        注意：IE8必须声明<!DOCTYPE>才能支持;lang伪类
+        为属性值为 no 的q元素定义引号的类型：q:lang(no) {quotes: "~" "~";}
+
+    * 所有伪类：
+        :checked	    input:checked	选择所有选中的表单元素
+        :disabled	    input:disabled	选择所有禁用的表单元素
+        :empty	        p:empty	选择所有没有子元素的p元素
+        :enabled	    input:enabled	选择所有启用的表单元素
+        :first-of-type	p:first-of-type	选择每个父元素是p元素的第一个p子元素
+        :in-range	    input:in-range	选择元素指定范围内的值
+        :invalid	    input:invalid	选择所有无效的元素
+        :last-child	    p:last-child	选择所有p元素的最后一个子元素
+        :last-of-type	p:last-of-type	选择每个p元素是其母元素的最后一个p元素
+        :not(selector)	:not(p)	选择所有p以外的元素
+        :nth-child(n)	p:nth-child(2)	选择所有 p 元素的父元素的第二个子元素
+        :nth-last-child(n)	p:nth-last-child(2)	选择所有p元素倒数的第二个子元素
+        :nth-last-of-type(n)	p:nth-last-of-type(2)	选择所有p元素倒数的第二个为p的子元素
+        :nth-of-type(n)	p:nth-of-type(2)	选择所有p元素第二个为p的子元素
+        :only-of-type	p:only-of-type	选择所有仅有一个子元素为p的元素
+        :only-child	p:only-child	选择所有仅有一个子元素的p元素
+        :optional	input:optional	选择没有"required"的元素属性
+        :out-of-range	input:out-of-range	选择指定范围以外的值的元素属性
+        :read-only	input:read-only	选择只读属性的元素属性
+        :read-write	input:read-write	选择没有只读属性的元素属性
+        :required	input:required	选择有"required"属性指定的元素属性
+        :root	root	选择文档的根元素
+        :target	#news:target	选择当前活动#news元素(点击URL包含锚的名字)
+        :valid	input:valid	选择所有有效值的属性
+        :link	a:link	选择所有未访问链接
+        :visited	a:visited	选择所有访问过的链接
+        :active	a:active	选择正在活动链接
+        :hover	a:hover	把鼠标放在链接上的状态
+        :focus	input:focus	选择元素输入后具有焦点
+        :first-letter	p:first-letter	选择每个<p> 元素的第一个字母
+        :first-line	p:first-line	选择每个<p> 元素的第一行
+        :first-child	p:first-child	选择器匹配属于任意元素的第一个子元素的 <p> 元素
+        :before	p:before	在每个<p>元素之前插入内容
+        :after	p:after	在每个<p>元素之后插入内容
+        :lang(language)	p:lang(it)	为<p>元素的lang属性选择一个开始值
+
+CSS 伪元素：
+
+    * :first-line 伪元素
+        用于向文本的首行设置特殊样式
+        例：p:first-line{color:#ff0000;font-variant:small-caps;} 对p元素第一行文本进行格式化
+        只能用于块级元素
+        可用属性：font、color、background、word-spacing、letter-spacing、text-decoration、vertical-align、text-transform、line-height、clear
+    
+    * :first-letter 伪元素
+        用于向文本的首字母设置特殊样式
+        其它同:first-line
+    
+    * 伪元素和CSS类
+        伪元素可以结合CSS类： p.article:first-letter {color:#ff0000;}
+    
+    * 多个伪元素
+        可以结合多个伪元素来使用
+    
+    * :before 伪元素
+        可以在元素的内容前面插入新内容
+
+    * :after 伪元素
+        可以在元素的内容之后插入新内容
+
+CSS 媒体类型：
+
+    * 媒体类型允许你指定文件将如何在不同媒体呈现。该文件可以以不同的方式显示在屏幕上，在纸张上，或听觉浏览器等等
+    * @media 规则
+
+        @media 规则允许在相同样式表为不同媒体设置不同的样式
+        例：浏览器屏幕上显示一个 14 像素的 Verdana 字体样式。但是如果页面打印，将是 10 个像素的 Times 字体
+        @media screen
+        {
+            p.test {font-family:verdana,sans-serif;font-size:14px;}
+        }
+        @media print
+        {
+            p.test {font-family:times,serif;font-size:10px;}
+        }
+        @media screen,print
+        {
+            p.test {font-weight:bold;}
+        }
+
+    * 其他媒体类型
+        all	        用于所有的媒体设备。
+        aural	    用于语音和音频合成器。
+        braille	    用于盲人用点字法触觉回馈设备。
+        embossed	用于分页的盲人用点字法打印机。
+        handheld	用于小的手持的设备。
+        print	    用于打印机。
+        projection	用于方案展示，比如幻灯片。
+        screen	    用于电脑显示器。
+        tty	        用于使用固定密度字母栅格的媒体，比如电传打字机和终端。
+        tv	        用于电视机类型的设备。
+
+CSS 属性 选择器：
+
+    * 具有特定属性的HTML元素样式
+    * 具有特定属性的HTML元素样式不仅仅是class和id。
+    * 注意：IE7和IE8需声明!DOCTYPE才支持属性选择器！IE6和更低的版本不支持属性选择器
+
+    * 属性选择器：
+        把包含标题（title）的所有元素变为蓝色：
+            [title]
+            {
+                color:blue;
+            }
+
+    * 属性和值选择器：
+        改变了标题title='runoob'元素的边框样式:
+        [title=runoob]
+        {
+            border:5px solid green;
+        }
+
+    * 属性和值的选择器 - 多值
+        包含指定值的title属性的元素样式的例子，使用（~）分隔属性和值:[title~=hello] { color:blue; }
+        包含指定值的lang属性的元素样式的例子，使用（|）分隔属性和值:[lang|=en] { color:blue; }
+    * 表单样式
+        属性选择器样式无需使用class或id的形式:
+            input[type="text"]{}
+            input[type="button"]{}
+
+    * CSS 属性选择器 *=, |=, ^=, $=, *= 的区别
