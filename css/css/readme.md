@@ -698,3 +698,328 @@ CSS 属性 选择器：
             input[type="button"]{}
 
     * CSS 属性选择器 *=, |=, ^=, $=, *= 的区别
+
+
+----------------------------- css3基础内容 ------------------------------
+
+css3简介：
+
+    * css3已完全向后兼容，所以你就不必改变现有的设计。浏览器将永远支持css2
+    * css3模块：
+        选择器、盒模型、背景和边框、文字特效、2D/3D转换、动画、多列布局、用户界面
+    * css3建议：
+        规范仍在开发，许多新的属性已在现在浏览器使用
+
+css3边框：
+
+    * 可以创建圆角边框，添加阴影框，并作为边界的形象而不适用设计程序
+    * 边框属性：
+        border-radius：圆角
+            css2中添加圆角，需在每个角落使用不同的图像
+            css3中用border-radius:25px;创建圆角
+            浏览器支持IE9+、chrome5.0(4.0使用-webkit-)、Firefox4.0(3.0使用-moz-)、safari5.0(3.1使用-webkit-)、opera10.5
+            简写值：同margin
+            单独设置某个角：border-top-left-radius\border-top-right-radius\border-bottom-left-radius\border-bottom-left-radius
+        box-shadow：盒阴影
+            css3中用box-shadow属性来添加阴影
+        border-image：边界图片
+            使用图像创建一个边框
+
+css3背景：
+
+    * 新的背景属性：
+        background-image
+            浏览器支持：IE9+、chrome4.0、Firefox3.6、safari3.1、opera11.5
+        background-size
+            浏览器支持：IE9+、chrome4.0(1.0 -webkit-)、Firefox4(3.6 -moz-)、safari4.1(3.1 -webkit-)、opera11.5(10.0 -o-)
+        background-origin
+            浏览器支持：IE9+、chrome1.0、Firefox4.0、safari3.0、opera10.5
+        background-clip
+            浏览器支持：IE9+、chrome4.0、Firefox4.0、safari3.0、opera10.5
+    
+
+css3渐变：
+
+    * 让你在两个或多个指定的颜色之间显示平稳的过渡
+    * 以前是用图像生成、现在是浏览器生成减小下载时间和带宽使用，放大效果更好
+    * 两种类型：
+        线性渐变：向下/向上/向左/向右/对角方向
+            语法：background: linear-gradient(direction(left top), color1, color2, ...)
+            使用角度：
+                你想要在渐变的方向上做更多的控制，你可以定义一个角度，而不用预定义方向
+                语法：background: linear-gradient(angle, color-stop1, color-stop2);
+                角度是指水平线和渐变线之间的角度，逆时针方向计算
+                0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变
+                换算公式 90 - x = y 其中 x 为标准角度，y为非标准角度。
+            使用透明度：
+                渐变也支持透明度（transparent），可用于创建减弱变淡的效果
+                为了添加透明度，我们使用 rgba() 函数来定义颜色结点
+            重复的线性渐变：
+                background: repeating-linear-gradient(red, yellow 10%, green 20%);
+
+        径向渐变：由他们的中心定义
+            创建一个径向渐变，你也必须至少定义两种颜色结点
+            可以指定渐变的中心、形状（圆形或椭圆形）、大小
+            语法：background: radial-gradient(center, shape size, start-color, ..., last-color);
+            重复的径向渐变：
+                repeating-radial-gradient() 函数用于重复径向渐变
+
+    * 浏览器兼容：IE10	chrome26(10 -webkit-)	firefox16(3.6 -moz-)	safari6.1(5.1 -webkit-)opera12.1(11.1 -o-)
+
+
+css3文本效果：
+
+    * 新的文本属性：
+        text-shadow：文本阴影
+            浏览器：chrome4、IE10、Firefox3.5、safari4.0、opera9.5
+        box-shadow：盒子阴影
+            浏览器：chrome10(4 -webkit-)、IE9、Firefox4(3.5 -moz-)、safari5(3.1 -webkit-)、opera10.5
+        text-overflow：文本溢出
+            浏览器：chrome4、IE6、Firefox7、safari3.1、opera11(9 -o-)
+        word-wrap：文本换行
+            浏览器：chrome23、IE5.5、Firefox3.5、safari6.1、opera12.1
+        word-break：单词拆分换行
+            浏览器：chrome4、IE5.5、Firefox15、safari3.1、opera15
+
+css3字体：
+
+    * @font-face来设置字体，只需要将字体文件包含在网站中，会自动下载
+    * 浏览器支持：
+        chrome4、ie9、Firefox3.5、safari3.2、opera10
+        IE9+, Firefox, Chrome, Safari, 和 Opera 支持 WOFF (Web Open Font Format) 字体.
+        Firefox, Chrome, Safari, 和 Opera 支持 .ttf(True Type字体)和.otf(OpenType)字体字体类型
+        Chrome, Safari 和 Opera 也支持 SVG 字体/折叠.
+        IE同样支持 EOT (Embedded OpenType) 字体.
+        注意： IE8 以及更早的版本不支持新的 @font-face 规则
+
+    * 定义：
+        在@font-face规则中，需先定义字体的名称，然后指向该字体文件
+        例：@font-face {font-family:myFont;src:url(sansation_light.woff)}
+
+    * 使用：
+        通过font-family引用字体名称
+        例 div{font-family:myFont;}
+
+css3 2D转换：
+
+    * css3转换可以对元素进行移动、缩放、转动、拉长或拉伸
+    * 浏览器支持：
+        transform\transform-origin：chrome36(4 -webkit-)、IE10(9 -ms-)、firefox16(3.5 -moz-)、safari3.2 -webkit-、opera23(15 -webkit- 12.1\10.5 -o-)
+
+    * 2D转换：
+        translate()：从当前元素位置移动
+            例：div{
+                    transform: translate(50px,100px);
+                    -ms-transform: translate(50px,100px); /* IE 9 */
+                    -webkit-transform: translate(50px,100px); /* Safari and Chrome */
+                }
+        rotate()：在一个给定度数顺时针旋转，允许负值，逆时针旋转
+            例：transform: rotate(30deg)
+        scale()：元素增加或缩小的大小，取决于宽度和高度的参数
+            例：transform: scale(2, 3);
+        skew()：两个参数，表示X轴和Y轴倾斜的角度，第二个参数为空，则默认为0，参数为负表示向相反方向倾斜
+            例：transform: skew(30deg,20deg);
+        matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能
+            例：transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+
+    * 2D 转换方法：
+        matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。
+        translate(x,y)	定义 2D 转换，沿着 X 和 Y 轴移动元素。
+        translateX(n)	定义 2D 转换，沿着 X 轴移动元素。
+        translateY(n)	定义 2D 转换，沿着 Y 轴移动元素。
+        scale(x,y)	定义 2D 缩放转换，改变元素的宽度和高度。
+        scaleX(n)	定义 2D 缩放转换，改变元素的宽度。
+        scaleY(n)	定义 2D 缩放转换，改变元素的高度。
+        rotate(angle)	定义 2D 旋转，在参数中规定角度。
+        skew(x-angle,y-angle)	定义 2D 倾斜转换，沿着 X 和 Y 轴。
+        skewX(angle)	定义 2D 倾斜转换，沿着 X 轴。
+        skewY(angle)	定义 2D 倾斜转换，沿着 Y 轴。
+
+css3 3D转换：
+
+    * 3D转换方法：
+        rotateX()：围绕其在一个给定度数X轴旋转的元素
+            例：transform: rotateX(120deg);
+        rotateY()：围绕其在一个给定度数Y轴旋转的元素
+            例：transform: rotateY(120deg);
+    * 浏览器支持：
+        transform/transform-origin/transform-style/perspective/perspective-origin/backface-visibility：
+            chrome36(12 -webkit-)、IE10、Firefox16(10 -moz-)、safari4 -webkit-、opera23(15 -webkit-)
+
+    * 转换属性：
+        transform	        向元素应用 2D 或 3D 转换。
+        transform-origin	允许你改变被转换元素的位置。
+        transform-style	    规定被嵌套元素如何在 3D 空间中显示。
+        perspective	        规定 3D 元素的透视效果。
+        perspective-origin	规定 3D 元素的底部位置。
+        backface-visibility	定义元素在不面对屏幕时是否可见。
+
+    * 3D 转换方法：
+        matrix3d(n,n,n,n,n,n,
+        n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+        translate3d(x,y,z)	定义 3D 转化。
+        translateX(x)	定义 3D 转化，仅使用用于 X 轴的值。
+        translateY(y)	定义 3D 转化，仅使用用于 Y 轴的值。
+        translateZ(z)	定义 3D 转化，仅使用用于 Z 轴的值。
+        scale3d(x,y,z)	定义 3D 缩放转换。
+        scaleX(x)	定义 3D 缩放转换，通过给定一个 X 轴的值。
+        scaleY(y)	定义 3D 缩放转换，通过给定一个 Y 轴的值。
+        scaleZ(z)	定义 3D 缩放转换，通过给定一个 Z 轴的值。
+        rotate3d(x,y,z,angle)	定义 3D 旋转。
+        rotateX(angle)	定义沿 X 轴的 3D 旋转。
+        rotateY(angle)	定义沿 Y 轴的 3D 旋转。
+        rotateZ(angle)	定义沿 Z 轴的 3D 旋转。
+        perspective(n)	定义 3D 转换元素的透视视图。
+
+css3过渡：
+
+    * 浏览器支持：
+        transition/transition-delay/transition-duration/transition-property/transition-timing-function：
+            chrome26(4.0 -webkit-)、IE10、Firefox16(4.0 -moz-)、safari6.1(3.1 -webkit-)、opera12.1(10.5 -o-)
+
+    * 元素从一中样式逐渐改变为另一种效果
+    * 实现：
+        1. 指定要添加效果的css属性
+        2. 指定效果的持续时间
+        例：transtion: width 2s;
+    * 多项改变：
+        例：transtion: width 2s, height 2s, transform 2s;
+    * 过渡属性：
+        transition	        简写属性，用于在一个属性中设置四个过渡属性。
+        transition-property	规定应用过渡的 CSS 属性的名称。
+        transition-duration	定义过渡效果花费的时间。默认是 0。
+        transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。
+        transition-delay	规定过渡效果何时开始。默认是 0。
+
+css3动画：
+
+    * 创建动画，需要使用@keyframes规则，指定一个css样式和动画逐步从目前样式更改为新样式
+    * 浏览器支持：
+        @keyframes/animation：
+            chrome43(4 -webkit-)、IE10、firefox16(5 -moz-)、safari9(4 -webkit-)、opera30(15 -webkit- 12 -o-)
+    * 实现：
+        利用@keyframes规则创建动画：
+            @keyframes myFirst{
+                from {background: red;}
+                to {background: yellow;}
+                // 也可以用0%-100%替换from和to
+            }
+        利用animation将动画绑定到元素上：
+            animation: myFirst 5s;
+    * CSS3的动画属性：
+        @keyframes	规定动画。
+        animation	所有动画属性的简写属性，除了 animation-play-state 属性。
+        animation-name	规定 @keyframes 动画的名称。
+        animation-duration	规定动画完成一个周期所花费的秒或毫秒。默认是 0。
+        animation-timing-function	规定动画的速度曲线。默认是 "ease"。
+        animation-fill-mode	规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。
+        animation-delay	规定动画何时开始。默认是 0。
+        animation-iteration-count	规定动画被播放的次数。默认是 1。
+        animation-direction	规定动画是否在下一周期逆向地播放。默认是 "normal"。
+        animation-play-state	规定动画是否正在运行或暂停。默认是 "running"。
+
+CSS3 多列:
+
+    * 可以将文本内容设计成像报纸一样的多列布局
+    * CSS3 多列属性:
+        column-count	    指定元素应该被分割的列数。
+        column-fill	        指定如何填充列
+        column-gap	        指定列与列之间的间隙
+        column-rule	所有 column-rule-* 属性的简写
+        column-rule-color	指定两列间边框的颜色
+        column-rule-style	指定两列间边框的样式
+        column-rule-width	指定两列间边框的厚度
+        column-span	        指定元素要跨越多少列
+        column-width	    指定列的宽度
+        columns	设置 column-width 和 column-count 的简写
+
+css3用户界面：
+
+    * CSS3 中, 增加了一些新的用户界面特性来调整元素尺寸，框尺寸和外边框
+    * 属性：
+        resize：指定一个元素是否应该由用户去调整大小
+            例：div{resize:both;overflow:auto;}
+        box-sizing：允许您以确切的方式定义适应某个区域的具体内容
+        outline-offset：对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓
+            轮廓与边框不同：
+                轮廓不占空间
+                轮廓可能是非矩形
+    * 新的用户界面特性：
+        appearance	    允许您使一个元素的外观像一个标准的用户界面元素
+        box-sizing	    允许你以适应区域而用某种方式定义某些元素
+        icon	        为创作者提供了将元素设置为图标等价物的能力
+        nav-down	    指定在何处使用箭头向下导航键时进行导航
+        nav-index	    指定一个元素的Tab的顺序
+        nav-left	    指定在何处使用左侧的箭头导航键进行导航
+        nav-right	    指定在何处使用右侧的箭头导航键进行导航
+        nav-up	        指定在何处使用箭头向上导航键时进行导航
+        outline-offset	外轮廓修饰并绘制超出边框的边缘
+        resize	        指定一个元素是否是由用户调整大小
+
+css3图片：
+
+    * 圆角图片
+    * 缩略图
+    * 响应式图片
+    * 图片文本
+    * 卡片式图片
+    * 图片滤镜
+    * 响应式图片相册
+    * 图片Modal
+
+css3按钮
+
+css3分页实例
+
+css3框大小：
+
+    css3中box-sizing属性可以设置width和height属性中包含padding和border
+
+css3弹性盒子：
+    
+    * 新的布局模式
+    * 当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式
+    * 引入弹性盒布局模型目的是提供更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间
+    * CSS3 弹性盒子属性：
+        display	        指定 HTML 元素盒子类型。
+        flex-direction	指定了弹性容器中子元素的排列方式
+        justify-content	设置弹性盒子元素在主轴（横轴）方向上的对齐方式。
+        align-items	    设置弹性盒子元素在侧轴（纵轴）方向上的对齐方式。
+        flex-wrap	    设置弹性盒子的子元素超出父容器时是否换行。
+        align-content	修改 flex-wrap 属性的行为，类似 align-items, 但不是设置子元素对齐，而是设置行对齐
+        flex-flow	    flex-direction 和 flex-wrap 的简写
+        order	        设置弹性盒子的子元素排列顺序。
+        align-self	    在弹性子元素上使用。覆盖容器的 align-items 属性。
+        flex	        设置弹性盒子的子元素如何分配空间。
+
+CSS3 多媒体查询：
+
+    * css2中@media规则是针对不同媒体类型可以定制不同的样式规则，如可以针对不同的媒体类型(显示器、便携    设备、电视机等)设置不同规则，但是在很多设备上支持不够友好。
+    * css3中多媒体查询继承了2中的思想：取代了查找设备的类型，根据设置自适应显示
+    * 媒体查询可用于检测很多事情：
+        1. viewport(视窗) 的宽度与高度
+        2. 设备的宽度与高度
+        3. 朝向 (智能手机横屏，竖屏) 。
+        4. 分辨率
+    * 语法：
+        由多种媒体组成，可包含一个或多个表达式，表达式根据条件是否成立返回true/false
+        @media not | only mediatype and (expressions) {}
+        如果指定的多媒体类型匹配设备类型则查询结果返回 true，文档会在匹配的设备上显示指定样式效果
+        除非你使用了 not 或 only 操作符，否则所有的样式会适应在所有设备上显示效果：
+
+            * not: not是用来排除掉某些特定的设备的，比如 @media not print（非打印设备）。
+            * only: 用来定某种特别的媒体类型。对于支持Media Queries的移动设备来说，如果存在only关键    字，移动设备的Web浏览器会忽略only关键字并直接根据后面的表达式应用样式文件。对于不支持      Media Queries的设备但能够读取Media Type类型的Web浏览器，遇到only关键字时会忽略这个样式   文件。
+            * all: 所有设备，这个应该经常看到。
+
+    * CSS3 多媒体类型：
+        all	用于所有多媒体类型设备
+        print	用于打印机
+        screen	用于电脑屏幕，平板，智能手机等。
+        speech	用于屏幕阅读器
+ 
+
+ css响应式设计：
+    
+    
+        
+
