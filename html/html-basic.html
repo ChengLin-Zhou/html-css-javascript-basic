@@ -7,10 +7,40 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>HTML 基础</title>
+         <script src="./filterXss.js"></script>
+        <script>
+            var params = 'javascript:alert(111)';
+            var str = filterXSS(params, {
+                whiteList:          [],        // 白名单为空，表示过滤所有标签
+                stripIgnoreTag:     true,      // 过滤所有非白名单标签的HTML
+                stripIgnoreTagBody: ['script']
+            });
+            console.log(str);
+        </script>
     </head>
     <body>
+        <p>概述：
+            HTML(Hyper Text Markup Language)超文本标记语言，用于创建web站点，运行于浏览器，由浏览器解析。
+            标记语言而不是编程语言
+            有一套标记标签
+            使用标记标签来描述网页
+            由标签和文本构成html文档也就是web页面
+            浏览器会识别标签并根据标签展示文档内容，标签不会展示
+        </p>
+        <p>两种类型的后缀名都可以：.html和.htm</p>
+        <p>HTML实例解析：
+            &gl;!DOCTYPE html&gt;     文档声明，用于为浏览器提供按什么文档模式解析html文档内容，网络上有很多不同的文件，如果能够正确声明HTML的版本，浏览器就能正确显示网页内容
+            &gl;html&gt;              根节点，文档的根节点包裹文档所有内容
+            &gl;head&gt;              文档头，包含了文档的元数据
+            &gl;title&gt;             文档标题，显示于浏览器标签栏
+            &gl;body&gt;              文档主体，浏览器中可见的文档内容
+        </p>
         <h1>标签</h1>
-        <p>决定了如何展示网页内容，浏览器可识别标签</p>
+        <p>
+            决定了如何展示网页内容，浏览器可识别标签
+            由<>包裹的关键词叫做标签
+            两种类型标签：闭合标签和开放标签
+        </p>
         <h1>HTML版本</h1>
         <ul>
             <li>HTML -- 1991</li>
@@ -23,20 +53,307 @@
             <li>XHTML5 -- 2013</li>
         </ul>
         <h1>HTML声明</h1>
+        <p>
+            不区分大小写
+            有助于浏览器中正确显示网页
+        </p>
         <ul>
             <li>
-                html5声明：<br>
-                &gt;!DOCTYPE html&gt;
+                html5通用声明：<br>
+                &gt;!DOCTYPE html&gt;<br>
+                h5不是基于SGML，不需要引用DTD
             </li>
             <li>
-                html4声明：<br>
+                html4通用声明：<br>
                 &gl;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                "http://www.w3.org/TR/html4/loose.dtd"&gt;
+                "http://www.w3.org/TR/html4/loose.dtd"&gt;<br>
+
+                html4是基于SGML(标准通用标记语言)，需引用DTD(文档类型声明)，DTD 指定了标记语言的规则，确保了浏览器能够正确的渲染内容<br>
+                html4规定了三种不同的 &gl;!DOCTYPE&gt; 声明，分别是：Strict、Transitional 和 Frameset：
+                    Strict：这个 DTD 包含所有 HTML 元素和属性，但不包括表象或过时的元素（如 font ）。框架集是不允许的
+                        &gl;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+                    
+                    Transitional：这个 DTD 包含所有 HTML 元素和属性，包括表象或过时的元素（如 font ）。框架集是不允许的
+                        &gl;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+                    
+                    Frameset：这个 DTD 与 HTML 4.01 Transitional 相同，但是允许使用框架集内容
+                        &gl;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt;
             </li>
             <li>
-                xhtml声明：<br>
+                xhtml通用声明：<br>
                 &gl;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<br>
+
+                XHTML 1.0 Strict：这个 DTD 包含所有 HTML 元素和属性，但不包括表象或过时的元素（如 font ）。框架集是不允许的。结构必须按标准格式的 XML 进行书写。
+                    &gl;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;<br>
+                
+                XHTML 1.0 Transitional：这个 DTD 包含所有 HTML 元素和属性，包括表象或过时的元素（如 font ）。框架集是不允许的。结构必须按标准格式的 XML 进行书写。
+                    &gl;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<br>
+                
+                XHTML 1.0 Frameset：这个 DTD 与 XHTML 1.0 Transitional 相同，但是允许使用框架集内容。
+                    &gl;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;<br>
+                
+                XHTML 1.1：这个 DTD 与 XHTML 1.0 Strict 相同，但是允许您添加模块（例如为东亚语言提供 ruby 支持）。
+                    &gl;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+            </li>
+            <li>
+                对于中文网页需设置页面编码为utf-8，有些浏览器是gbk编码，要将编码设置为gbk，不然会产生乱码
+            </li>
+            <li>HTML 元素和有效 DOCTYPES：http://www.runoob.com/tags/html-elementsdoctypes.html</li>
+            <li>所有主流浏览器都支持文档声明</li>
+        </ul>
+
+        <br><br><br><br>
+        <!-- 水平分割线 -->
+        <hr>
+        <br><br><br><br>
+
+        <h3>
+            所有html标签及属性详解：
+            标签：标签可嵌套，大部分标签都有属性，单标签尽量闭合为了未来版本准备，大小写不敏感，强制使用小写，为了统一
+            属性：大部分标签可设置属性，位于起始标签，属性可在元素中添加附加信息，key="value"的形式出现，大小写不敏感，推荐使用小写
+            全局属性：
+                accesskey	        设置访问元素的键盘快捷键。
+                class	            规定元素的类名（classname）
+                contenteditable New	规定是否可编辑元素的内容。
+                contextmenu New	    指定一个元素的上下文菜单。当用户右击该元素，出现上下文菜单
+                data-*     New	    用于存储页面的自定义数据
+                dir	                设置元素中内容的文本方向。
+                draggable  New	    指定某个元素是否可以拖动
+                dropzone   New	    指定是否将数据复制，移动，或链接，或删除
+                hidden     New	    hidden  属性规定对元素进行隐藏。
+                id	                规定元素的唯一 id
+                lang	            设置元素中内容的语言代码。
+                spellcheck  New	    检测元素是否拼写错误
+                style	            规定元素的行内样式（inline style）
+                tabindex	        设置元素的 Tab 键控制次序。
+                title	            规定元素的额外信息（可在工具提示中显示）
+                translate  New	    指定是否一个元素的值在页面载入时是否需要翻译
+                new代表html5新属性
+        </h3>
+        <ul>
+            <li>
+                HTML标题：h1-h6标签
+                <p>块级元素，浏览器会在前后添加空行</p>
+                <p>h1最大标题，h6最小标题，会生成粗体大号文本</p>
+                <p>请只用于标题，搜索引擎使用标题为您的网页的结构和内容编制索引，用户可以通过标题来快速浏览您的网页，所以用标题来呈现文档结构是很重要的</p>
+                <p></p>
+            </li>
+            <li>
+                HTML段落：p标签
+                <p>将文档分为若干个段落，块级元素，前后有空行</p>
+                <p>当显示页面时，浏览器会移除源代码中多余的空格和空行。所有连续的空格或空行都会被算作一个空格。需要注意的是，HTML 代码中的所有连续的空行（换行）也被显示为一个空格</p>
+            </li>
+            <li>
+                HTML链接：a标签
+                <p>使用链接可以与网络上另一个文档相连，点击链接可以从一个页面跳至另一个页面</p>
+                <p>在a标签中用href属性来描述链接的地址</p>
+                <p>链接在不同的状态下呈现不同的样式(未进行自定义样式前提下)</p>
+                <p>使用 target 属性，你可以定义被链接的文档在何处显示。</p>
+                <p>id属性可用于创建在一个HTML文档书签标记，可用于点击某个关键链接定位到页面该id位置</p>
+                <p>请始终将正斜杠添加到子文件夹。假如这样书写链接：href="http://www.runoob.com/html"，就会向服务器产生两次 HTTP 请求。
+                    这是因为服务器会添加正斜杠到这个地址，然后创建一个新的请求，就像这样：href="http://www.runoob.com/html/"。</p>
+            </li>
+            <li>
+                HTML图像：img标签
+                <p>使用src属性来定义图片地址</p>
+                <p>alt属性来定义图片未显示时的提示信息</p>
+                <p>width和height属性用来定义宽高</p>
+                <p>雪碧图可以减少多张图片带来的资源请求问题</p>
+
+            </li>
+            <li>HTML图像地图：map标签</li>
+            <li>HTML图像地图中的可点击区域：area标签</li>
+            <li>HTML换行：br标签</li>
+            <li>
+                HTML水平线：hr标签
+                <p>生成一条水平线，前后空行，用于分割内容</p>
+            </li>
+            <li>HTML注释：<!-- 注释 --> 提高可读性，使代码便于理解，浏览器会忽略注释不显示它们</li>
+            <li>
+                HTML文本格式化：
+                <h5>文本加粗：</h5>
+                <p>b和strong标签，对文本进行加粗显示，现在用strong代替b</p>
+                <h5>文本斜体：</h5>
+                <p>em和i标签，对文本进行斜体展示，现在用em代替i</p>
+                <h5>小号字体：</h5>
+                <p>small标签，定义小号字</p>
+                <h5>上标和下标：</h5>
+                <p>sup和sub标签，对文本进行上标或下标展示</p>
+                <h5>插入字：</h5>
+                <p>ins标签，定义插入字</p>
+                <h5>删除字：</h5>
+                <p>del标签，定义删除字</p>
+            </li>
+            <li>
+                HTML计算机输出标签：
+                <h5>计算机代码</h5>
+                <p>code标签，定义计算机代码</p>
+                <h5>键盘码</h5>
+                <p>kbd标签，定义键盘码</p>
+                <h5>计算机代码样本</h5>
+                <p>samp标签，定义计算机代码样本</p>
+                <h5>变量</h5>
+                <p>var标签，定义变量</p>
+                <h5>预格式文本</h5>
+                <p>pre标签，定义预格式文本</p>
+            </li>
+            <li>
+                HTML 引文, 引用, 及标签定义
+                <h5>缩写</h5>
+                <p>abbr标签，定义缩写</p>
+                <h5>地址</h5>
+                <p>address标签，定义地址</p>
+                <h5>文字方向</h5>
+                <p>bdo标签，定义文字方向</p>
+                <h5>长引用</h5>
+                <p>blockquote标签，定义长的引用</p>
+                <h5>短引用</h5>
+                <p>q标签，定义短的引用</p>
+                <h5>引用、引证</h5>
+                <p>cite标签，定义引用、引证</p>
+                <h5>定义项目</h5>
+                <p>dfn标签，定义一个定义项目</p>
+            </li>
+            <li>
+                HTML头部
+                <h5>头部</h5>
+                <p>head标签，定义了文档的头部，包含文档主题、元数据、样式和脚本，包含 title, style, meta, link, script, noscript, base标签</p>
+                <h5>标题</h5>
+                <p>title标签，定义了浏览器工具栏的标题，网页添加收藏夹时显示的标题，显示在搜索引擎结果页的标题</p>
+                <h5>网页基本链接地址，所有链接标签的默认地址</h5>
+                <p>base标签，定义了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接</p>
+                <h5>外部样式引入</h5>
+                <p>link标签，定义了文档与外部资源之间的关系，用于引入外部样式表</p>
+                <h5>样式文件引用</h5>
+                <p>style标签，定义了HTML文档的样式文件引用地址，在style元素中你也可以直接添加样式来渲染 HTML 文档</p>
+                <h5>元数据</h5>
+                <p>meta标签,描述了一些基本的元数据</p>
+                <p>元数据也不显示在页面上，但会被浏览器解析</p>
+                <p>通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据</p>
+                <p>可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务</p>
+                <p>为搜索引擎定义关键词:&gl;meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript"&gt;</p>
+                <p>为网页定义描述内容:&gl;meta name="description" content="免费 Web & 编程 教程"&gt;</p>
+                <p>定义网页作者:&gl;meta name="author" content="Runoob"&gt;</p>
+                <p>每30秒钟刷新当前页面:&gl;meta http-equiv="refresh" content="30"&gt;</p>
+                <h5>脚本文件</h5>
+                <p>script标签，用于加载脚本文件</p>
+                <h5>无法使用脚本</h5>
+                <p>noscript标签，用于无法加载脚本时使用，给用户一个提示</p>
+            </li>
+            <li>
+                HTML CSS样式
+                <p>是从html4开始使用的，为了更好的渲染html元素</p>
+                <p>三种方式使用样式：
+                    <br>内联样式：用style属性来定义
+                    <br>内部样式表：头部head区域使用style元素来包含CSS
+                    <br>外部引用：使用link元素来引用外部.css文件
+                    <br>推荐使用外部引用方式，便于修改和维护
+                </p>
+                <p>弃用的标签和属性：
+                        在HTML4, 原来支持定义HTML元素样式的标签和属性已被弃用。这些标签将不支持新版本的HTML标签
+                        不建议使用的标签有: font, center, strike
+                        不建议使用的属性: color 和 bgcolor.
+                </p>
+            </li>
+            <li>HTML表格
+                <h5>表格</h5>
+                <p>table标签，定义表格</p>
+                <p>border属性，定义表格边框</p>
+                <h5>表头</h5>
+                <p>th标签，定义表头，大部分浏览器会把表头设置成粗体居中样式</p>
+                <h5>表格-行</h5>
+                <p>tr标签，定义表格中的行</p>
+                <h5>表格-单元格</h5>
+                <p>td标签，定义表格单元格</p>
+                <h5>表格-标题</h5>
+                <p>caption标签，定义表格的标题</p>
+                <h5>表格列组</h5>
+                <p>colgroup标签，定义表格列的组</p>
+                <h5>表格列的属性</h5>
+                <p>col标签，定义用于表格列的属性</p>
+                <h5>表格-页眉</h5>
+                <p>thead标签，定义表格的页眉</p>
+                <h5>表格-主体</h5>
+                <p>tbody标签，定义表格的主体</p>
+                <h5>表格页脚</h5>
+                <p>tfoot标签，定义表格的页脚</p>
+            </li>
+            <li>HTML列表
+                <h5>有序列表</h5>
+                <p>ol、li标签，定义有序列表</p>
+                <p>li标签，定义列表项</p>
+                <h5>无序列表</h5>
+                <p>ul、li标签，定义无序列表</p>
+                <h5>自定义列表</h5>
+                <p>dl、dt、dd标签，定义自定义列表</p>
+                <p>dt标签，自定义列表项</p>
+                <p>dd标签，自定义列表项的描述</p>
+            </li>
+            <li>HTML区块
+                <h5>块级元素</h5>
+                <p>div、p、table、ul、h1等元素，独占一行，开始和结束添加空行</p>
+                <h5>内联元素</h5>
+                <p>span、b、i、td、a、img等元素，不会以新行出现，在行内显示</p>
+            </li>
+            <li>HTML布局
+                <h5>两种布局方式</h5>
+                <p>div、span标签结合css进行布局</p>
+                <p>table标签进行布局</p>
+                <p>推荐使用div布局方式</p>
+            </li>
+            <li>HTML表单和输入
+                <h5>表单</h5>
+                <p>form标签，定义表单，用于收集不同类型的用户输入</p>
+                <h5>输入元素-文本输入</h5>
+                <p>input标签type属性为text时，用于收集用户的文本输入</p>
+                <h5>密码字段</h5>
+                <p>input标签type属性为password时，用于收集用户的密码输入</p>
+                <h5>单选按钮</h5>
+                <p>input标签type属性为radio时，用于收集用户的单选内容</p>
+                <h5>复选框</h5>
+                <p>input标签type属性为checkbox时，用于收集用户的多选输入</p>
+                <h5>提交按钮</h5>
+                <p>input标签type属性为submit时，用于提交用户输入，提交至form标签action属性的地址</p>
+                <h5>文本域</h5>
+                <p>textarea标签，定义文本输入域，收集用户输入的文本内容</p>
+                <h5>输入标题</h5>
+                <p>label标签，定义input标签的标题</p>
+                <h5>一组相关表单元素</h5>
+                <p>fieldset标签，定义一组相关表单元素并使用外框包含起来</p>
+                <h5>定义fieldset标题</h5>
+                <p>legend标签，定义fieldset标签的标题</p>
+                <h5>下拉列表</h5>
+                <p>select标签，定义下拉列表</p>
+                <h5>选项组</h5>
+                <p>optgroup标签，定义选项组</p>
+                <h5>下拉列表选项</h5>
+                <p>option标签，定义下拉列表选项</p>
+                <h5>点击按钮</h5>
+                <p>button标签，定义点击按钮</p>
+                <h5>预先定义的输入控件选项列表</h5>
+                <p>datalist标签，定义一个预先定义的输入控件选项列表</p>
+                <h5>表单的密钥对生成器字段</h5>
+                <p>keygen标签，定义表单的密钥对生成器字段</p>
+                <h5>计算结果</h5>
+                <p>output标签，定义一个计算结果</p>
+            </li>
+            <li>HTML框架
+                <h5>框架</h5>
+                <p>iframe标签，在同一个浏览器窗口中显示多个页面</p>
+                <p>src属性指定页面地址</p>
+                <p>width和height设置框架宽高</p>
+                <p>frameborder属性设置框架边框</p>
+            </li>
+            <li>HTML颜色
+                <p>三种设置颜色方式：
+                    <br>十六进制数：#ffffff
+                    <br>颜色名称：red
+                    <br>rgb和rgba：rgb(0,0,0)\rgba(0,0,0,1)
+                </p>
+            </li>
+            <li>HTML字符实体
+                <p>在html中，许多字符是预留的不可以直接使用，需使用字符实体使用</p>
             </li>
         </ul>
     </body>
