@@ -7,16 +7,6 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>HTML 基础</title>
-         <script src="./filterXss.js"></script>
-        <script>
-            var params = 'javascript:alert(111)';
-            var str = filterXSS(params, {
-                whiteList:          [],        // 白名单为空，表示过滤所有标签
-                stripIgnoreTag:     true,      // 过滤所有非白名单标签的HTML
-                stripIgnoreTagBody: ['script']
-            });
-            console.log(str);
-        </script>
     </head>
     <body>
         <p>概述：
