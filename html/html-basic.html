@@ -344,6 +344,78 @@
             </li>
             <li>HTML字符实体
                 <p>在html中，许多字符是预留的不可以直接使用，需使用字符实体使用</p>
+                <h5>不间断空格</h5>
+                <p>浏览器会删除多余空格只显示一个，可以用字符实体&nbsp;代替</p>
+                <h5>结合音标符</h5>
+                <p>
+                    发音符号是加到字母上的一个"glyph(字形)"<br>
+                    变音符号可以出现字母的上面和下面，或者字母里面，或者两个字母间。<br>
+                    变音符号可以与字母、数字字符的组合来使用
+                </p>
+                <h5>字符实体</h5>
+                <p>
+                        空格( )	        &nbsp;	    &#160; （实体编号）<br>
+                        小于号(<)	    &lt;	    &#60;           <br>
+                        大于号(>)	    &gt;	    &#62;           <br>
+                        和号(&)	        &amp;	    &#38;           <br>
+                        引号(")	        &quot;	    &#34;           <br>
+                        撇号(') 	    &apos; (IE不支持)	&#39;   <br>
+                        分(￠)	       &cent;	   &#162;           <br>
+                        镑(£)	        &pound;	    &#163;          <br>
+                        人民币/日元(¥)	 &yen;	    &#165;          <br>
+                        欧元(€)	        &euro;	    &#8364;         <br>
+                        小节(§)	        &sect;	    &#167;          <br>
+                        版权(©)	        &copy;	    &#169;          <br>
+                        注册商标(®)	    &reg;	    &#174;          <br>
+                        商标(™)	        &trade;	    &#8482;         <br>
+                        乘号(×)	        &times;	    &#215;          <br>
+                        除号(÷)	        &divide;	&#247;          <br>
+                </p>
+            </li>
+            <li>HTML URL-统一资源定位器
+                <p>
+                    语法规则：scheme://host.domain:port/path/filename <br>
+                    scheme - 定义因特网服务的类型。最常见的类型是 http   <br>
+                    host - 定义域主机（http 的默认主机是 www）          <br>
+                    domain - 定义因特网域名，比如 runoob.com            <br>
+                    :port - 定义主机上的端口号（http 的默认端口号是 80） <br>
+                    path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。<br>
+                    filename - 定义文档/资源的名称 <br>
+                    <h5>常见的 URL Scheme</h5>
+                    <p>
+                        http	超文本传输协议，以 http:// 开头的普通网页。不加密。
+                        https	安全超文本传输协议，安全网页，加密所有信息交换。
+                        ftp	    文件传输协议，用于将文件下载或上传至网站。
+                        file	您计算机上的文件。
+                    </p>
+                    <h5>URL字符编码</h5>
+                    <p>只支持ASCII字符集</p>
+                </p>
+            </li>
+            <li>HTML5内容
+                <h5>简介</h5>
+                <p> W3C 与 WHATWG 合作的结果，WHATWG 指 Web Hypertext Application Technology Working Group，该机构致力于 web 表单和应用程序</p>
+                <h5>改进</h5>
+                <p>
+                        新元素              <br>
+                        新属性              <br>
+                        完全支持 CSS3        <br>
+                        Video 和 Audio      <br>
+                        2D/3D 制图          <br>
+                        本地存储            <br>
+                        本地 SQL 数据       <br>
+                        Web 应用            <br>
+                </p>
+            </li>
+            <li>HTML5浏览器支持
+                <p>其它浏览器及IE9都支持HTML5</p>
+                <p>
+                    兼容方案：<br>
+                    <!--[if lt IE 9]>
+                        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                    <![endif]-->
+                    主要解决HTML5提出的新的元素不被IE6-8识别，这些新元素不能作为父节点包裹子元素，并且不能应用CSS样式。
+                </p>
             </li>
         </ul>
     </body>
