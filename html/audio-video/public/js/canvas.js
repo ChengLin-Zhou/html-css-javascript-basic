@@ -89,6 +89,7 @@
     // 调用绘制方法
     createShape(canvasShape);
     createLine(canvasLine);
-    createText(canvasText)
+    createText(canvasText);
+    createArc(canvasArc)
 
 })();
