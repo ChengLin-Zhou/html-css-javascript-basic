@@ -1,0 +1,63 @@
+/*不支持h5新语义元素的兼容方案*/
+header, section, footer, aside, nav, main, article, figure {
+    display: block; 
+}
+/*全局样式*/
+h1,h2,h3,h4,h5,h6,p,ul,ol,li,dl,dt,dd,div,pre,code,form,fieldset,legend,input,button,textarea,blockquote,th,td,body {
+    padding: 0;
+    margin: 0;
+}
+
+html,body {
+    background: #fff;
+    color: #000000;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif; 
+    margin: 0 auto; 
+    height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    text-decoration: none;
+    -webkit-user-select: none;
+}
+
+a {
+    color: #000;
+    -webkit-user-select: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+ol,ul,li {
+    list-style: none;
+}
+
+textarea,select,button {
+    font: 0.55rem Verdana, Helvetica, Arial, sans-serif;
+    border: 1px solid #bfbfbf;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+label {
+    font-size: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+button,select,textarea{
+    outline: none;
+}
+
+/*player 样式*/

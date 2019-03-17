@@ -1,0 +1,48 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Audio/Video</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div>
+        <h1>Audio标签-播放音乐</h1>
+        <audio controls autoplay="autoplay" loop preload="auto">
+            <source src="szz.mp3" type="audio/mpeg">
+            <source src="szz.ogg" type="audio/ogg">
+            您的浏览器不支持 audio 元素。
+        </audio>
+    </div>
+   <div>
+       <h1>Object标签-插件-插入音乐播放</h1>
+       <object data="szz.mp3" type="audio/mpeg">
+            <param name="autoplay" value="true">
+        </object>
+   </div>
+    <div>  
+        <h1>Embed标签-插件-插入音乐播放</h1>
+        <embed src="szz.mp3" type="audio/mpeg">
+    </div>
+    <div>
+        <h1>Audio和Embed兼容方案-音乐播放</h1>
+        <audio controls autoplay="autoplay" loop preload="auto">
+                <source src="szz.mp3" type="audio/mpeg">
+                <source src="szz.ogg" type="audio/ogg">
+                <embed src="szz.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div>
+        <h1>Audio和Embed和Object兼容方案-音乐播放</h1>
+        <audio controls autoplay="autoplay" loop preload="auto">
+                <source src="szz.mp3" type="audio/mpeg">
+                <source src="szz.ogg" type="audio/ogg">
+                <object data="szz.mp3" type="audio/mpeg">
+                    <param name="autoplay" value="true">
+                    <embed src="szz.mp3" type="audio/mpeg">
+                </object>
+        </audio>
+    </div>
+</body>
+</html>

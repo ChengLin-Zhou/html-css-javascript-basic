@@ -565,5 +565,310 @@
                 <p>video：定义一个音频或者视频</p>
             </div>
         </div>
+
+        <!-- 列表 -->
+        <div>
+            <h1>列表</h1>
+            <div>
+                <h2>有序列表、无序列表、自定义列表、menu、command</h2>
+                <div>
+                    <p>有序列表：ol、li标签</p>
+                    <p>无序列表：ul、li标签</p>
+                    <p>自定义列表：dl、dd(列表项描述)、dt(列表项)标签</p>
+                    <p>menu、command暂不支持</p>
+                </div>
+                <div>
+                    <ol>
+                        <li>tom</li>
+                        <li>jhon</li>
+                        <li>hanlei</li>
+                    </ol>
+                    <ul>
+                        <li>sex</li>
+                        <li>age</li>
+                        <li>height</li>
+                    </ul>
+                    <dl>
+                        <dt>book</dt>
+                            <dd>study</dd>
+                        <dt>cat</dt>
+                            <dd>animal</dd>
+                        <dt>red</dt>
+                            <dd>color</dd>
+                        <dt>lion</dt>
+                            <dd>animal</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- 框架 -->
+        <div>
+            <h1>框架</h1>
+            <div>
+                <h2>frame、frameset、noframes、iframe</h2>
+                <div>
+                    <p>
+                        <p>hhtml4中使用框架集需要设置doctype为frameset DTD才能正确使用，h5中不支持frameset、frame和noframes，支持内联框架iframe</p>
+                        <p>
+                            frameset：定义一个框架集<br>
+                            用来组织一个或者多个 frame 元素。每个 frame 有各自独立的文档<br>
+                            cols：pixels | %，H5不支持。规定框架集中列的数目和尺寸<br>
+                            rows：pixels | %，H5不支持。规定框架集中行的数目和尺寸<br>
+                        </p>
+                        <p>
+                            frame：定义frameset中的子窗口<br>
+                            frameborder：规定是否显示框架周围的边框<br>
+                            longdesc：URL，规定一个包含有关框架内容的长描述的页面<br>
+                            marginheight：规定框架的上方和下方的边距<br>
+                            marginwidth：规定框架的左侧和右侧的边距<br>
+                            name：规定框架的名称<br>
+                            noresize：noresize，规定无法调整框架的大小<br>
+                            scrolling：yes | no | auto，规定是否在框架中显示滚动条<br>
+                            src：规定在框架中显示的文档的 URL<br>
+                        </p>
+                        <p>
+                            <!-- <frameset cols="25%,*,25%">
+                                <frame src="frame_a.htm">
+                                <frame src="frame_b.htm">
+                                <frame src="frame_c.htm">
+                                <noframes>Sorry, your browser does not handle frames!</noframes>
+                            </frameset> -->
+                        </p>
+                    </p>
+                    <p>
+                        <p>
+                            iframe：规定一个内联框架。被用来在当前 HTML 文档中嵌入另一个文档<br>
+                            align：H5不支持。HTML 4.01 已废弃。 规定如何根据周围的元素来对齐 iframe
+                            frameborder：HTML5 不支持。规定是否显示 iframe 周围的边框
+                            height：规定 iframe 的高度
+                            longdesc：URL，H5不支持。规定一个页面，该页面包含了有关 iframe 的较长描述
+                            marginheight：H5不支持。规定 iframe 的顶部和底部的边距
+                            marginwidth：H5不支持。规定 iframe 的左侧和右侧的边距
+                            name：规定 iframe 的名称
+                            sandbox：h5新增，allow-forms|allow-same-origin|allow-scripts|allow-top-navigation，对 iframe 的内容定义一系列额外的限制
+                            scrolling：yes|no|auto，H5不支持。规定是否在 iframe 中显示滚动条
+                            seamless：h5新增，seamless，规定 iframe 看起来像是父文档中的一部分
+                            src：规定在 iframe 中显示的文档的 URL
+                            srcdoc：h5新增，HTML_code，规定页面中的 HTML 内容显示在 iframe 中
+                            width：规定 iframe 的宽度
+                        </p>
+                        <iframe width="100%" height="300" src="http://www.runoob.com" frameborder="1" scrolling="yes" name="top"></iframe>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图像 -->
+        <div>
+            <h1>图像</h1>
+            <div>
+                <h2>img标签</h2>
+                <div>
+                    alt：规定图像的替代文本<br>
+                    crossorigin：新增,anonymous | use-credentials，设置图像的跨域属性<br>
+                    height：规定图像的高度<br>
+                    ismap：ismap，将图像规定为服务器端图像映射<br>
+                    src：规定显示图像的 URL<br>
+                    usemap：#mapname，将图像定义为客户器端图像映射<br>
+                    width：规定图像的宽度<br>
+                </div>
+            </div>
+            <div>
+                <h2>map标签</h2>
+                <p>用于客户端图像映射。图像映射指带有可点击区域的一幅图像</p>
+                <p>img>中的 usemap 属性可引用 map 中的 id 或 name 属性（取决于浏览器），所以我们应同时向 map 添加 id 和 name 属性</p>
+                <p>area 元素永远嵌套在 map 元素内部。area 元素可定义图像映射中的区域</p>
+                <div>
+                    <img src="http://www.runoob.com/try/demo_source/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+
+                    <map name="planetmap">
+                        <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+                        <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+                        <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+                    </map>
+                </div>
+            </div>
+            <div>
+                <h2>canvas标签</h2>
+                <div>新增，通过脚本（通常是 JavaScript）来绘制图形（比如图表和其他图像）</div>
+            </div>
+            <div>
+                <h2>figure-figcaption标签</h2>
+                <div>
+                    figcaption：定义一个 caption 为 figure 标签<br>
+                    figure：用于对元素进行组合
+                </div>
+                <div>
+                    <figure>
+                        <img src="http://www.runoob.com/try/demo_source/img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+                        <figcaption>Fig1. - A view of the pulpit rock in Norway.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单 -->
+        <div>
+            <h1>表单</h1>
+            <div>
+                    <p>form：定义一个 HTML 表单，用于用户输入</p>
+                    <p>input：定义一个输入控</p>
+                    <p>textarea：定义多行的文本输入控件</p>
+                    <p>button：定义按钮</p>
+                    <p>select：定义选择列表（下拉列表）</p>
+                    <p>optgroup：定义选择列表中相关选项的组合</p>
+                    <p>option：定义选择列表中的选项</p>
+                    <p>label：定义 input 元素的标注</p>
+                    <p>fieldset：定义围绕表单中元素的边框</p>
+                    <p>legend：定义 fieldset 元素的标题</p>
+                    <p>datalist：新增，规定了 input 元素可能的选项列表</p>
+                    <p>keygen：新增	，规定用于表单的密钥对生成器字段</p>
+                    <p>output：新增，定义一个计算的结果</p>
+            </div>
+            <div>
+                <form action="/" method="post" oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+                    <label for="username">username：</label>
+                    <input type="text" maxlength="20" name="username" placeholder="username" autocomplete="on"><br><br>
+                    <label for="password">password：</label>
+                    <input type="password" name="password" placeholder="password" autocomplete="on"><br><br>
+                    <label for="checkbox ">选择：</label>
+                    <input type="checkbox" checked name="animal" value="cat">
+                    <input type="checkbox" name="animal" value="dog"><br><br>
+                    <label for="radio">单选：</label>
+                    <input type="radio" checked="checked" name="sex" value="0">男
+                    <input type="radio" name="sex" value="1">女<br><br>
+                    <label for="color">color：</label>
+                    <input type="color" name="color"><br><br>
+                    <label for="date">date：</label>
+                    <input type="date" name="date" autofocus="autofocus"><br><br>
+                    <label for="datetime">datetime：</label>
+                    <input type="datetime" name="datetime"><br><br>
+                    <label for="datetime-local">datetime-local：</label>
+                    <input type="datetime-local" name="datetime-local"><br><br>
+                    <label for="email">email：</label>
+                    <input type="email" name="email"><br><br>
+                    <label for="file">file：</label>
+                    <input type="file" name="file" accept="image/*"><br><br>
+                    <label for="hidden">hidden：</label>
+                    <input type="hidden" name="hidden"><br><br>
+                    <label for="image">image：</label>
+                    <input type="image" name="image" alt="img" formaction="/"><br><br>
+                    <label for="month">month：</label>
+                    <input type="month" name="month"><br><br>
+                    <label for="number">number：</label>
+                    <input type="number" name="number"><br><br>
+                    <label for="range">range：</label>
+                    <input type="range" min="1" max="20" name="range"><br><br>
+                    <label for="tel">tel：</label>
+                    <input type="tel" name="tel"><br><br>
+                    <label for="search">search：</label>
+                    <input type="search" name="search"><br><br>
+                    <label for="time">time：</label>
+                    <input type="time" name="time"><br><br>
+                    <label for="url">url：</label>
+                    <input type="url" name="url" required><br><br>
+                    <label for="week">week：</label>
+                    <input type="week" name="week" readonly><br><br>
+                    <label for="textarea">建议：</label>
+                    <textarea name="question" id="question" cols="30" rows="10"></textarea><br><br>
+
+                    <label for="list">list：</label>
+                    <select name="code" id="code" multiple="true" required size="10">
+                        <optgroup label="Swedish Cars">
+                            <option value="volvo" selected>Volvo</option>
+                            <option value="saab">Saab</option>
+                        </optgroup>
+                        <optgroup label="German Cars">
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </optgroup>
+                        <optgroup label="animals">
+                            <option value="cat">cat</option>
+                            <option value="dog">dog</option>
+                        </optgroup>
+                    </select><br><br>
+
+                    <label for="list">list：</label>
+                    <select name="code1" id="code1" required>
+                        <option value="volvo" selected>Volvo</option>
+                        <option value="saab">Saab</option>="dog">dog</option>
+                    </select><br><br>
+
+                    <input list="browsers">
+ 
+                    <datalist id="browsers">
+                        <option value="Internet Explorer">
+                        <option value="Firefox">
+                        <option value="Chrome">
+                        <option value="Opera">
+                        <option value="Safari">
+                    </datalist><br><br>
+
+                    用户名: <input type="text" name="usr_name"><br>
+                    加密: <keygen name="security"><br><br>
+
+                    0<input type="range" id="a" value="50">100
+                    +<input type="number" id="b" value="50">
+                    =<output name="x" for="a b"></output>
+
+                    <fieldset>
+                        <legend>Personalia:</legend>
+                        Name: <input type="text"><br>
+                        Email: <input type="text"><br>
+                        Date of birth: <input type="text">
+                    </fieldset>
+
+                    <button type="reset">reset</button>
+                    <button type="submit" formaction="/">sure</button>
+                    <input disabled type="button" value="button">
+                </form>
+            </div>
+        </div>
+
+        <!-- 格式/样式 -->
+        <div>
+            <h1>格式/样式</h1>
+            <div>
+                    <p>acronym：HTML5不再支持。 定义只取首字母的缩写</p>
+                    <p>abbr：定义一个缩写</p>
+                    <p>address：定义文档作者或拥有者的联系信息</p>
+                    <p>b：定义粗体文本</p>
+                    <p>bdi：新增，允许您设置一段文本，使其脱离其父元素的文本方向设置</p>
+                    <p>bdo：定义文本的方向</p>
+                    <p>big：HTML5不再支持。 定义大号文本</p>
+                    <p>blockquote：定义块引用</p>
+                    <p>center：HTML5不再支持。 HTML 4.01 已废弃。定义居中文本</p>
+                    <p>cite：定义引用(citation)</p>
+                    <p>code：定义计算机代码文本</p>
+                    <p>del：定义被删除文本</p>
+                    <p>dfn：定义定义项目</p>
+                    <p>em：	定义强调文本</p>
+                    <p>font：HTML5不再支持。 HTML 4.01 已废弃。 定义文本的字体、尺寸和颜色</p>
+                    <p>i：定义斜体文本</p>
+                    <p>ins：定义被插入文本</p>
+                    <p>kbd：定义键盘文本</p>
+                    <p>mark：新增，定义带有记号的文本</p>
+                    <p>meter：新增，定义度量衡。仅用于已知最大和最小值的度量</p>
+                    <p>pre：定义预格式文本</p>
+                    <p>progress：新增，定义运行中的任务进度（进程）</p>
+                    <p>q：定义短的引用</p>
+                    <p>rp：新增，定义不支持 ruby 元素的浏览器所显示的内容</p>
+                    <p>rt：新增，定义字符（中文注音或字符）的解释或发音</p>
+                    <p>ruby：新增，定义 ruby 注释（中文注音或字符）</p>
+                    <p>s：定义加删除线的文本</p>
+                    <p>samp：定义计算机代码样本</p>
+                    <p>small：定义小号文本</p>
+                    <p>strike：HTML5不再支持。 HTML 4.01 已废弃。 定义加删除线的文本</p>
+                    <p>strong：定义语气更为强烈的强调文本</p>
+                    <p>sub：定义下标文本</p>
+                    <p>sup：定义上标文本</p>
+                    <p>time：新增，定义一个日期/时间</p>
+                    <p>tt：HTML5不再支持。 定义打字机文本</p>
+                    <p>u：定义下划线文本</p>
+                    <p>var：定义文本的变量部分</p>
+                    <p>wbr：新增，规定在文本中的何处适合添加换行符</p>
+            </div>
+        </div>
     </body>
 </html>
