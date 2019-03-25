@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Websocket</title>
+</head>
+<body>
+    <div>
+        <h1>Websocket</h1>
+        <div id="result"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
+    <script>
+        /*
+        * HTTP协议缺陷：请求只能从客户端发起，无法通过服务器主动更新状态，服务器端连续变化的状态客户端获取会很麻烦
+        * 长轮询：ajax实现，轮询效率低，非常占用资源
+        * 长连接SSE，单项通道，只能服务器推送消息给客户端
+        * 新的协议：基于TCP的全双工通讯协议，只需要一次握手，便可进行持久性连接，并进行双向数据传输
+        * 特点：
+        *     （1）建立在 TCP 协议之上，服务器端的实现比较容易
+              （2）与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器
+              （3）数据格式比较轻量，性能开销小，通信高效
+              （4）可以发送文本，也可以发送二进制数据
+              （5）没有同源限制，客户端可以与任意服务器通信
+              （6）协议标识符是ws（如果加密，则为wss），服务器网址就是 URL
+                ws://example.com:80/some/path
+        
+        * 实现：
+            1.创建实例var Socket = new WebSocket(url, [protocol] ); 参数 url, 指定连接的 URL。参数 protocol 是可选的，指定了可接受的子协议
+            2.创建监听事件
+                open	Socket.onopen	连接建立时触发
+                message	Socket.onmessage	客户端接收服务端数据时触发
+                error	Socket.onerror	通信发生错误时触发
+                close	Socket.onclose	连接关闭时触发
+            3.若连接成功，使用send()方法发送数据，close()方法关闭连接
+            4.Socket.readyState属性可查看状态
+                只读属性 readyState 表示连接状态，可以是以下值：
+                0 - 表示连接尚未建立
+                1 - 表示连接已建立，可以进行通信
+                2 - 表示连接正在进行关闭
+                3 - 表示连接已经关闭或者连接不能打开
+
+            Socket.bufferedAmount	
+                只读属性 bufferedAmount 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数
+            5.接收的数据可能是文本类型也可能是二进制类型(Arraybuffer或blob对象)
+            6.bufferedAmount属性表示还有多少字节的二进制数据没有发送出去。它可以用来判断发送是否结束
+            7.服务端实现：
+                常用的 Node 实现有以下三种
+                µWebSockets
+                Socket.IO
+                WebSocket-Node
+
+                另外一种WebSocket 服务器：Websocketd
+
+                响应：
+                Connection 必须设置 Upgrade，表示客户端希望连接升级。
+                Upgrade 字段必须设置 Websocket，表示希望升级到 Websocket 协议。
+        */
+
+        // function socket() {
+        //     if("WebSocket" in window) {
+        //         // 打开一个 web socket
+        //        var ws = new WebSocket("ws://localhost:8080/");
+                
+        //         ws.onopen = function()
+        //         {
+        //            // Web Socket 已连接上，使用 send() 方法发送数据
+        //            ws.send("发送数据");
+        //            console.log("数据发送中...");
+        //         };
+                 
+        //         ws.onmessage = function (evt) 
+        //         { 
+        //            var received_msg = evt.data;
+        //            document.getElementById('result').innerHTML = received_msg;
+        //            console.log("数据已接收...");
+        //         };
+                 
+        //         ws.onclose = function()
+        //         { 
+        //            // 关闭 websocket
+        //            console.log("连接已关闭..."); 
+        //         };
+        //     }else {
+        //         document.getElementById('result').innerHTML = '您的浏览器不支持websocket...'
+        //     }
+        // }
+
+        // socket();
+
+        // socket.io实现
+        var socket = io('http://127.0.0.1:5050');
+        
+        setInterval(function() {
+            console.log(111);
+            socket.emit('chat', '123456');
+        }, 5000);
+        
+        socket.on('connection', function() {
+            console.log('connected');
+        });
+
+        socket.on('message', function(event) {
+            console.log(event);
+            document.getElementById("result").innerHTML += event;
+        });
+
+        socket.on('disconnect', function() {
+            console.log('disconnect');
+        });
+
+        socket.on('reconnect', function() {
+            console.log('reconnect');
+        });
+    </script>
+</body>
+</html>

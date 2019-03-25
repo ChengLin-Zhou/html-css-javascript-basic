@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" manifest="demo.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/canvas.css">
+    <title>应用程序缓存</title>
+</head>
+<!-- 
+    离线缓存的优势：一般浏览器限制在5MB大小
+        离线浏览 - 用户可在应用离线时使用它们
+        速度 - 已缓存资源加载得更快
+        减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源
+
+    流程：
+        1.文档中添加manifest属性：<html manifest="demo.appcache">(还可以直接在 manifest 文件中直接指定该页面，不然不添加属性是不会缓存的)
+        2.服务端维护Manifest 文件，后缀名为.appcache
+            manifest 文件是简单的文本文件，它告知浏览器被缓存的内容（以及不缓存的内容）
+            manifest 文件可分为三个部分：
+                CACHE MANIFEST - 在此标题下列出的文件将在首次下载后进行缓存
+                NETWORK - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+                FALLBACK - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+        3.注意：
+            *缓存清单文件可以使用任意扩展名，但传输它的 MIME 类型必须为 text/cache-manifest 
+            *manifest 文件的建议的文件扩展名是：”.appcache”
+            *在缓存清单文件中列出的所有记录必须拥有相同的协议、主机名与端口号。
+            *不要在清单文件中指定清单文件本身，否则将无法让浏览器得知清单文件有新版本出现
+            *站点中的其他页面，即使没有引用manifest文件，如果请求了缓存中的资源，也会从缓存中读取
+            *直接请求被缓存的资源，也会从缓存中读取
+            *该特性已从web标准中废弃，未来浏览器可能不再支持，MDN推荐使用Service Workers代替
+
+        4.缓存状态
+            UNCACHED(未缓存)
+            一个特殊的值，用于表明一个应用缓存对象还没有完全初始化。
+
+            IDLE(空闲)
+            应用缓存此时未处于更新过程中。
+
+            CHECKING(检查)
+            清单已经获取完毕并检查更新。
+
+            DOWNLOADING(下载中)
+            下载资源并准备加入到缓存中，这是由于清单变化引起的。
+
+            UPDATEREADY(更新就绪)
+            一个新版本的应用缓存可以使用。有一个对应的事件updateready，当下载完毕一个更新，并且还未使用 swapCache() 方法激活更新时，该事件触发，而不会是 cached 事件。
+
+            OBSOLETE(废弃)
+            应用缓存现在被废弃。
+
+            更新缓存的时机
+            一旦应用被缓存，它就会保持缓存直到发生下列情况： 
+            用户清空浏览器缓存 
+            manifest 文件被修改（包括更改注释） 
+            由程序来更新应用缓存
+
+        5.缓存中的事件
+            oncached	    当离线资源存储完成后触发
+            onchecking	    当浏览器对离线存储资源进行检查的时候触发
+            ondownloading	当浏览器开始下载离线资源的时候触发
+            onerror	        当缓存资源失败的时候触发
+            onnoupdate	    浏览器检查manifest文件没有更新时触发
+            onobsolete	    过时的
+            onprogress	    当浏览器缓存每一个资源的时候都会触发一次
+            onupdateready	浏览器更新离线资源完成的时候触发
+
+        6.加载完成后刷新
+            当manifest文件更新之后，浏览器下载完成之后会触发onupdateready事件，但是页面并没有被刷新，即新的文件并没有执行，需要程序控制刷新一下
+            window.applicationCache.addEventListener('updateready', function () {
+                if(window.applicationCache.status === window.applicationCache.UPDATEREADY) {
+                    window.applicationCache.swapCache();
+                    window.location.reload();
+                }
+            });
+ -->
+<body>
+    <div>
+        <h1>应用程序缓存</h1>
+        <img src="/images/4g.png" alt="4g">
+    </div>
+    <script>
+        // 离线资源存储完成之后触发
+        window.applicationCache.addEventListener('cached', function () {
+            console.log('cached');
+        });
+
+        // 离线存储资源进行更新检查的时候会触发
+        window.applicationCache.addEventListener('checking', function () {
+            console.log('checking');
+        });
+
+        // 开始下载离线资源的时候会触发
+        window.applicationCache.addEventListener('downloading', function () {
+            console.log('downloading');
+        });
+
+        // 下载每一个资源的时候会触发
+        window.applicationCache.addEventListener('progress', function () {
+            console.log('progress');
+        });
+
+        // 离线资源更新完成之后
+        window.applicationCache.addEventListener('updateready', function () {
+            console.log('updateready');
+        });
+
+        // 检查更新之后发现没有资源更新的时候触发
+        window.applicationCache.addEventListener('noupdate', function () {
+            console.log('noupdate');
+        });
+
+        // obsolete
+        window.applicationCache.addEventListener('obsolete', function () {
+            console.log('obsolete');
+        });
+
+        // error
+        window.applicationCache.addEventListener('error', function () {
+            console.log('error');
+        });
+    </script>
+</body>
+</html>

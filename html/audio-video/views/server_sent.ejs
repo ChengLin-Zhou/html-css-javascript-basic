@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Server-Sent 服务器发送事件</title>
+</head>
+<body>
+    <div>
+        <h1>Server-Sent 服务器发送事件</h1>
+        <div id="result"></div>
+    </div>
+    <script>
+        // WebSocket是二进制协议，而SSE是文本协议，可以通过SSE连接传输二进制数据：在SSE中，只有两个具有特殊意义的字符，它们是CR和LF，而对它们进行转码并不难。但用SSE传输二进制数据时数据会变大，如果需要从服务端到客户端传输大量的二进制数据，最好还是用WebSocket
+        /*
+        * 本质：
+            1.HTTP 协议无法做到服务器主动推送信息。但是，有一种变通方法，就是服务器向客户端声明，接下来要发送的是流信息
+            2.客户端不会关闭连接，会一直等着服务器发过来的新的数据流，视频播放就是这样的例子
+            3.基于 HTTP 协议，目前除了 IE/Edge，其他浏览器都支持
+
+        * 特点：
+            1.与 WebSocket作用相似，都是建立浏览器与服务器之间的通信渠道，然后服务器向浏览器推送信息
+            2.WebSocket更强大和灵活。它是全双工通道，可以双向通信；SSE是单向通道，只能服务器向浏览器发送，因为流信息本质上就是下载
+            3.如果浏览器向服务器发送信息，就变成了另一次 HTTP 请求
+
+            优势：
+                SSE 使用 HTTP 协议，现有的服务器软件都支持。WebSocket 是一个独立协议
+                SSE 属于轻量级，使用简单；WebSocket 协议相对复杂
+                SSE 默认支持断线重连，WebSocket 需要自己实现
+                SSE 一般只用来传送文本，二进制数据需要编码后传送，WebSocket 默认支持传送二进制数据
+                SSE 支持自定义发送的消息类型
+
+        * 客户端API：
+            1. var source = new EventSource('URL')返回一个EventSource实例，向服务器发起链接，每隔2秒发送一次
+            2. 可以同域也可以跨域，如果要跨域，可以指定第二个参数EventSource(url, { withCredentials: true })，表示是否一起发送Cookie
+
+            实例属性：readyState属性
+                0：相当于常量EventSource.CONNECTING，表示连接还未建立，或者断线正在重连
+                1：相当于常量EventSource.OPEN，表示连接已经建立，可以接受数据
+                2：相当于常量EventSource.CLOSED，表示连接已断，且不会重连
+            3.事件：
+                连接建立触发open事件
+                服务端发送事件客户端会触发message事件，数据存储在事件对象event.data中，是文本格式
+                出现错误会触发error事件
+                关闭连接是close()方法
+            4.自定义事件：
+                默认情况下，服务器发来的数据，总是触发浏览器EventSource实例的message事件
+                开发者还可以自定义 SSE 事件，这种情况下，发送回来的数据不会触发message事件
+                source.addEventListener('foo', function (event) {
+                    var data = event.data;
+                    // handle message
+                }, false);
+
+        服务器实现：
+            1.响应头
+                Content-Type: text/event-stream
+                Cache-Control: no-cache
+                Connection: keep-alive
+            2.返回数据标识：
+                data：数据内容用该字段表示
+                event：表示自定义的事件类型，默认是message事件。浏览器可以用addEventListener()监听该事件
+                id：数据标识符，每条数据的编号
+                    浏览器用lastEventId属性读取这个值
+                    一旦连接断线，浏览器会发送一个 HTTP 头，包含一个特殊的Last-Event-ID头信息
+                    将这个值发送回来，用来帮助服务器端重建连接。因此，这个头信息可以被视为一种同步机制
+                retry：服务器可以用retry字段，指定浏览器重新发起连接的时间间隔
+
+        */
+        var result = document.getElementById('result');
+
+        if(typeof(EventSource) !== "undefined")
+        {
+            // 浏览器支持 Server-Sent
+            var source = new EventSource("/sse-demo");
+            source.onmessage = function(event)
+            {
+                console.log('Server is success');
+                result.innerHTML += event.data + "<br>";
+            };
+            source.onopen = function() {
+                console.log('Server is connected');
+            };
+            source.onerror = function() {
+                console.log(source.readyState);
+                console.log('Server is error');
+                // source.close();
+            };
+        }
+        else
+        {
+            // 浏览器不支持 Server-Sent..
+            result.innerHTML = "浏览器不支持 Server-Sent..";
+        }
+    </script>
+</body>
+</html>

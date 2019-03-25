@@ -5,7 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "nodejs-websocket": "^1.7.2",
+    "save": "^2.3.3",
+    "socket.io": "^2.2.0",
+    "websocket": "^1.0.28"
   },
   "devDependencies": {},
   "scripts": {

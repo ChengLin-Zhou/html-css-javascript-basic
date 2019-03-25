@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webworks</title>
+    <!-- 同页面worker文件 -->
+    <!-- <script type="app/worker" id="worker">
+        var i=0;
+
+        function timedCount()
+        {
+            i=i+1;
+            postMessage(i);
+            setTimeout(timedCount, 500);
+        }
+
+        // worker线程监听主线程发来的消息
+        self.addEventListener('message', function (e) {
+
+            var data = e.data;
+            switch (data.cmd) {
+                case 'start':
+                self.postMessage('WORKER STARTED: ' + data.msg);
+                break;
+                case 'stop':
+                self.postMessage('WORKER STOPPED: ' + data.msg);
+                // 自身内部关闭线程
+                self.close(); // Terminates the worker.
+                break;
+                default:
+                self.postMessage('Unknown command: ' + data.msg);
+            };
+
+            self.postMessage('You said: ' + e.data);
+            timedCount();
+        }, false);
+    </script> -->
+</head>
+<body>
+    <div>
+        <h1>Webworks</h1>
+        <p>计数： <output id="result"></output></p>
+        <button onclick="startWorker()">开始工作</button> 
+        <button onclick="stopWorker()">停止工作</button>
+    </div>
+    <script>
+        /*
+        * http://www.ruanyifeng.com/blog/2018/07/web-worker.html 详解地址
+        * 运行在后台的 JavaScript，不会影响页面的性能
+        * 限制：
+            Web Worker无法访问DOM节点
+            Web Worker无法访问全局变量或是全局函数
+            Web Worker无法调用alert()或者confirm之类的函数
+            Web Worker无法访问window、document之类的浏览器全局变量
+        
+        * worker与shadowWorker：
+            Web workers可分为两种类型：专用线程、共享线程
+            专用线程随当前页面的关闭而结束；这意味着专用线程只能被创建它的页面访问
+            与之相对应的共享线程r可以被多个页面访问
+
+            专用线程：
+                let worker = new Worker("worker.js");  
+                
+            共享线程：
+                let worker = new SharedWorker("sharedworker.js");
+
+        * worker的通信：
+            专用线程
+            使用 onmessage() ， postmessage()通信
+
+            主线程:
+            let worker = new Worker ('worker.js')
+            worker.onmessage = (e) => {
+                console.log(e.data) // I post a message to main thread
+            }
+            worker.postMessage('main thread got a message')
+            
+            子线程： worker.js 
+            onmessage = (e) => {
+                console.log(e.data) // main thread got a message
+            }
+            postMessage('I post a message to main thread')
+
+            共享线程：
+            SharedWorker需要用到port属性，接收需要先connect
+
+            主线程：
+            worker.port.onmessage = function(e){}
+            worker.port.postMessage('data');
+            
+            子线程：
+            addEventListener('connect', function(event){
+                var port = event.ports[0]
+                //接收
+                port.onmessage = function(event){
+                    console.log(event.data);
+                };
+                //发送
+                port.postMessage("data");
+                port.start();
+            });
+
+    * 
+      JS单线程，任务需按顺序执行，无法充分利用当前服务资源性能
+      Web Worker相当于开启一个多线程环境，与主线程互不干扰，完成一些任务并通知主线程，分担主线程压力，减少堵塞和缓慢
+
+      限制：
+            同源限制：
+                分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源
+
+            DOM限制：
+                Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用document、window、parent这些对象。但是，Worker 线程可以navigator对象和location对象
+            
+            通信联系：
+                Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成
+            
+            脚本限制：
+                Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求
+
+            文件限制：
+                Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络
+
+        加载脚本：
+            专门的方法importScripts('script.js')，加载多个脚本用,分割
+
+        错误处理:
+            主线程可以监听 Worker 是否发生错误。如果发生错误，Worker 会触发主线程的error事件
+            Worker 内部也可以监听error事件
+
+        结束线程：
+            
+            // 在主线程中终止
+            worker.terminate()
+            // 在子线程中终止自身
+            self.close()
+
+        错误监听：
+            worker.addEventListener("error", function(evt){  
+                alert("Line #" + evt.lineno + " - " + evt.message + " in " + evt.filename);  
+            }, false);  
+            worker.postMessage(10000); 
+
+        相关方法：
+            postMessage() 方法 - 它用于向 HTML 页面传回一段消息
+            terminate() 方法 - 终止Web Worker
+
+        数据通信:
+            1.主线程与 Worker 之间的通信内容，可以是文本，也可以是对象。需要注意的是，这种通信是拷贝关系，即是传值而不是传址，Worker 对通信内容的修改，不会影响到主线程
+            2.浏览器内部的运行机制是，先将通信内容串行化，然后把串行化后的字符串发给 Worker，后者再将它还原
+            3.主线程与 Worker 之间也可以交换二进制数据，比如 File、Blob、ArrayBuffer 等类型，也可以在线程之间发送
+            4.拷贝方式发送二进制数据，会造成性能问题
+            5.为了解决这个问题，JavaScript 允许主线程把二进制数据直接转移给子线程，但是一旦转移，主线程就无法再使用这些二进制数据了，这是为了防止出现多个线程同时修改数据的麻烦局面。这种转移数据的方法，叫做Transferable Objects。这使得主线程可以快速把数据交给 Worker，对于影像处理、声音处理、3D 运算等就非常方便了，不会产生性能负担
+            例：
+                // Transferable Objects 格式
+                worker.postMessage(arrayBuffer, [arrayBuffer]);
+
+                // 例子
+                var ab = new ArrayBuffer(1);
+                worker.postMessage(ab, [ab]);
+
+        同页面的 Web Worker：
+            通常情况下，Worker 载入的是一个单独的 JavaScript 脚本文件，但是也可以载入与主线程在同一个网页的代码
+            <!DOCTYPE html>
+            <body>
+                <script id="worker" type="app/worker">
+                addEventListener('message', function () {
+                    postMessage('some message');
+                }, false);
+                <\/script>
+            <\/body>
+            <\/html>
+
+            上面是一段嵌入网页的脚本，注意必须指定<script>标签的type属性是一个浏览器不认识的值，上例是app/worker。
+            然后，读取这一段嵌入页面的脚本，用 Worker 来处理：
+                var blob = new Blob([document.querySelector('#worker').textContent]);
+                var url = window.URL.createObjectURL(blob);
+                var worker = new Worker(url);
+
+                worker.onmessage = function (e) {
+                // e.data === 'some message'
+                };
+            
+            先将嵌入网页的脚本代码，转成一个二进制对象，然后为这个二进制对象生成 URL，再让 Worker 加载这个 URL。这样就做到了，主线程和 Worker 的代码都在同一个网页上面
+
+        API：
+            new Worker('script.js', {name: 'worker1'})构造函数可以传两个参数第一个是引用的js的url，第二个是线程名，区分多个线程用
+
+            返回一个worker对象：
+                Worker.onerror：指定 error 事件的监听函数。
+                Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在Event.data属性中。
+                Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
+                Worker.postMessage()：向 Worker 线程发送消息。
+                Worker.terminate()：立即终止 Worker 线程。
+
+            线程：Web Worker 有自己的全局对象，不是主线程的window，而是一个专门为 Worker 定制的全局对象。因此定义在window上面的对象和方法不是全部都可以使用
+            线程有一些自己的全局属性和方法：
+                self.name： Worker 的名字。该属性只读，由构造函数指定。
+                self.onmessage：指定message事件的监听函数。
+                self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
+                self.close()：关闭 Worker 线程。
+                self.postMessage()：向产生这个 Worker 线程发送消息。
+                self.importScripts()：加载 JS 脚本。
+        */
+
+    // function startWorker() {
+    //     if(typeof(Worker) !== "undefined") {
+    //         if(typeof(w) == "undefined") {
+    //             // 创建worker线程
+    //             w = new Worker("demo_workers.js");
+    //             // 发送消息给子线程
+    //             // w.postMessage('message');
+
+    //             // 数据通信-二进制数据
+    //             var uInt8Array = new Uint8Array(new ArrayBuffer(10));
+    //             for (var i = 0; i < uInt8Array.length; ++i) {
+    //                 uInt8Array[i] = i * 2; // [0, 2, 4, 6, 8,...]
+    //             }
+    //             w.postMessage(uInt8Array)
+
+    //             // 加载同页面worker文件
+    //             // var blob = new Blob([document.querySelector('#worker').textContent]);
+    //             // var url = window.URL.createObjectURL(blob);
+    //             // w = new Worker(url);
+
+    //             // w.postMessage('message');
+    //         }
+    //         // 主线程监听worker线程发来的消息
+    //         w.onmessage = function(event) {
+    //             console.log(event.data);
+    //             document.getElementById("result").innerHTML = event.data;
+    //         };
+    //     } else {
+    //         document.getElementById("result").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+    //     }
+    // }
+
+    // function stopWorker() 
+    // { 
+    //     // 停止子线程
+    //     w.terminate();
+    //     w = undefined;
+    // }  
+
+
+    // woker中创建worker
+    var worker = new Worker('demo_workers.js');
+    worker.onmessage = function (event) {
+        document.getElementById('result').textContent = event.data;
+    };
+    </script>
+</body>
+</html>

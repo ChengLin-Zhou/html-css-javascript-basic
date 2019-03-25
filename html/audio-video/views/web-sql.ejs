@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web SQL</title>
+</head>
+<body>
+    <h1>
+        Web SQL
+    </h1>
+    <div>
+        <ul>
+            <li><a id="add" href="#">sql-增</a></li>
+            <li><a id="delete" href="#">sql-删</a></li>
+            <li><a id="update" href="#">sql-改</a></li>
+            <li><a id="search" href="#">sql-查</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        /*
+        * openDatabase：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象
+        * transaction：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚
+        * executeSql：这个方法用于执行实际的 SQL 查询
+        * 
+        * 1.打开或创建数据库
+        * var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+          数据库名称 - 版本号 - 描述文本 - 数据库大小 - 创建回调
+
+        * 2.执行查询操作
+        db.transaction(function (tx) {  
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+        });
+
+        * 3.插入数据-静态值插入和动态值插入
+        db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+        });
+
+        // 动态值插入
+        db.transaction(function (tx) {  
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+            tx.executeSql('INSERT INTO LOGS (id,log) VALUES (?, ?)', [e_id, e_log]);
+        });
+
+
+        * 4.读取数据
+        db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+                var len = results.rows.length, i;
+                msg = "<p>查询记录条数: " + len + "</p>";
+                document.querySelector('#status').innerHTML +=  msg;
+                
+                for (i = 0; i < len; i++){
+                    alert(results.rows.item(i).log );
+                }
+                
+            }, null);
+        });
+
+        * 5.删除数据
+        db.transaction(function (tx) {
+            tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+        });
+
+        // 动态值删除
+        db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM LOGS WHERE id=?', [id]);
+        });
+
+
+        * 6.更新数据
+        db.transaction(function (tx) {
+            tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2');
+        });
+
+        // 动态值更新
+        db.transaction(function(tx) {
+            tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=?', [id]);
+        });
+        */
+
+        var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024, function(){
+            console.log('sql create success');
+        });
+        var msg;
+
+        var addSql = document.getElementById('add');
+        var deleteSql = document.getElementById('delete');
+        var updateSql = document.getElementById('update');
+        var searchSql = document.getElementById('search');
+
+        addSql.onclick = function() {
+            console.log('add');
+            db.transaction(function (tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+                tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+                tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+                msg = '数据表已创建，且插入了两条数据。';
+                console.log(msg);
+            });
+        }
+        
+        deleteSql.onclick = function() {
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM LOGS  WHERE id=1');
+                msg = '删除 id 为 1 的记录。';
+                console.log(msg);
+            });
+        }
+
+        updateSql.onclick = function() {
+            db.transaction(function (tx) {
+                tx.executeSql('UPDATE LOGS SET log=\'www.w3cschool.cc\' WHERE id=2');
+                msg = '更新 id 为 2 的记录。';
+                console.log(msg);
+            });
+        }
+
+        searchSql.onclick = function() {
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+                    var len = results.rows.length, i;
+                    msg = "查询记录条数: " + len;
+                    console.log(msg);
+                    
+                    for (i = 0; i < len; i++){
+                        msg = results.rows.item(i).log;
+                        console.log(msg);
+                    }
+                }, null);
+            });
+        }
+    </script>
+</body>
+</html>

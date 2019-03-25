@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 实例练习</title>
+    <style>
+        /* css 背景颜色 */
+        .css-background {
+            background-color: red;
+            color: #ffffff; 
+        }
+        .css-fl {
+            float: left;
+        }
+        .css-fr {
+            float: right;
+        }
+        .css-b-b1 {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+        .css-b-b2 {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+        .css-b-b3 {
+            width: 50px;
+            height: 50px;
+            background-image: url("/images/4g.png");
+            background-size: 100% 100%;
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            /* 固定背景 */
+            /* background-attachment: fixed; */
+        }
+        .css-b-b4 {
+            width: 100%;
+            height: 50px;
+            background-image: url("/images/4g.png");
+            background-position: 0 0;
+            /* background-size: 0 100%; */
+            background-repeat: repeat-x;
+            clear: both;
+        }
+        /* css文本 */
+        .css-text {
+            margin-top: 20px;
+        }
+        .css-t-t {
+            text-align: center;
+        }
+        .css-t-d {
+            text-align: right;
+            text-decoration: underline;
+            color: blueviolet;
+        }
+        .css-t-p1 {
+            text-align: justify;
+            /* 字符大小写 */
+            text-transform: uppercase;
+            /* 字符空间 */
+            letter-spacing: 2px;
+            /* 行高 */
+            line-height: 25px;
+            /* 字符方向 */
+            direction: ltr;
+            /* 单词间隔 */
+            word-spacing: 15px;
+            /* 禁止换行 */
+            white-space: nowrap;
+            /* 文字对象和图片对象同行对齐 */
+            vertical-align: text-top;
+        }
+        /* CSS的字体 */
+        .css-font {
+            margin-top: 20px
+        }
+        .css-f-f {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            font-style: inherit;
+            font-variant: small-caps;
+            line-height: 30px
+            /* font:italic bold 12px/30px Georgia,serif; */
+        }
+        /* css 链接 */
+        .css-a-style a:link{
+            color: red;
+        }
+        .css-a-style a:visited{
+            color: blueviolet;
+        }
+        .css-a-style a:hover{
+            color: green;
+        }
+        .css-a-style a:active{
+            color: yellow
+        }
+    </style>
+</head>
+<body>
+   <div class="css-demo">
+       <!-- 设置背景颜色 -->
+       <div class="css-background">
+            <div class="css-fl css-b-b1"></div>
+            <div class="css-fl css-b-b2"></div>
+            <div class="css-fl css-b-b3"></div>
+            <div class="css-b-b4"></div>
+            <div>
+                    background	            简写属性，作用是将背景属性设置在一个声明中<br>
+                    background-attachment	背景图像是否固定或者随着页面的其余部分滚动<br>
+                    background-color	    设置元素的背景颜色<br>
+                    background-image	    把图像设置为背景<br>
+                    background-position	    设置背景图像的起始位置<br>
+                    background-repeat	    设置背景图像是否及如何重复<br>
+            </div>
+       </div>
+       <!-- 文本 -->
+       <div class="css-text">
+           <!-- 颜色、文本对齐、下划线、缩进、文本字母、字符空间、行空间、文字方向、文字间隔、文字换行 -->
+           <h3 class="css-t-t">CSS 文字</h3>
+           <p class="css-t-d">2019-03-29</p>
+            <p class="css-t-p1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Doloribus doloremque numquam voluptatem eum veniam minima fuga expedita voluptatibus enim consectetur, 
+                suscipit vitae, quam nobis libero reprehenderit alias. Non, quam assumenda.
+                这是一段汉字，啦啦啦反垄断法的
+            </p>
+       </div>
+       <div>
+            color	        设置文本颜色<br>
+            direction	    设置文本方向<br>
+            letter-spacing	设置字符间距<br>
+            line-height	    设置行高<br>
+            text-align	    对齐元素中的文本<br>
+            text-decoration	向文本添加修饰<br>
+            text-indent	    缩进元素中文本的首行<br>
+            text-shadow	    设置文本阴影<br>
+            text-transform	控制元素中的字母<br>
+            unicode-bidi	设置或返回文本是否被重写 <br>
+            vertical-align	设置元素的垂直对齐<br>
+            white-space	    设置元素中空白的处理方式<br>
+            word-spacing	设置字间距<br>
+       </div>
+   </div> 
+   <!-- CSS的字体 -->
+   <div class="css-font">
+       <div class="css-f-f">
+           姐姐迪恩你奶奶覅i决定将计就计福建加快可是咳咳咳看看价格接近库萨克酷酷的解放军金额看看数控雕刻机借记卡科技开发就看见
+       </div>
+        <div>
+            font	        在一个声明中设置所有的字体属性<br>
+            font-family	    指定文本的字体系列<br>
+            font-size	    指定文本的字体大小<br>
+            font-style	    指定文本的字体样式<br>
+            font-variant	以小型大写字体或者正常字体显示文本<br>
+            font-weight	    指定字体的粗细<br>
+        </div>
+   </div>
+   <!-- CSS链接 -->
+   <div class="css-a-style">
+       <div>
+            <a href="#">tab1</a>
+            <a href="#">tab2</a>
+            <a href="#">tab3</a>
+            <a href="#">tab4</a>
+       </div>
+       <div>
+            a:link - 正常，未访问过的链接<br>
+            a:visited - 用户已访问过的链接<br>
+            a:hover - 当用户鼠标放在链接上时<br>
+            a:active - 链接被点击的那一刻<br>
+       </div>
+   </div>
+   <!-- 列表样式 -->
+   <div>
+       <div>
+            list-style	        简写属性。用于把所有用于列表的属性设置于一个声明中<br>
+            list-style-image	将图象设置为列表项标志<br>
+            list-style-position	设置列表中列表项标志的位置<br>
+            list-style-type	    设置列表项标志的类型<br>
+       </div>
+   </div>
+   <!-- 盒模型 -->
+   <div>
+       <div>
+            Margin(外边距) - 清除边框外的区域，外边距是透明的<br>
+            Border(边框) - 围绕在内边距和内容外的边框<br>
+            Padding(内边距) - 清除内容周围的区域，内边距是透明的<br>
+            Content(内容) - 盒子的内容，显示文本和图像<br>
+
+            最终元素的总宽度计算公式是这样的：<br>
+            总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距<br>
+
+            元素的总高度最终计算公式是这样的：<br>
+            总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距<br>
+       </div>
+   </div>
+   <!-- 边框 -->
+   <div>
+       <div>
+            border	            简写属性，用于把针对四个边的属性设置在一个声明<br>
+            border-style	    用于设置元素所有边框的样式，或者单独地为各边设置边框样式<br>
+            border-width	    简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度<br>
+            border-color	    简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色<br>
+            border-bottom	    简写属性，用于把下边框的所有属性设置到一个声明中<br>
+            border-bottom-color	设置元素的下边框的颜色<br>
+            border-bottom-style	设置元素的下边框的样式<br>
+            border-bottom-width	设置元素的下边框的宽度<br>
+            border-left	        简写属性，用于把左边框的所有属性设置到一个声明中<br>
+            border-left-color	设置元素的左边框的颜色<br>
+            border-left-style	设置元素的左边框的样式<br>
+            border-left-width	设置元素的左边框的宽度<br>
+            border-right	    简写属性，用于把右边框的所有属性设置到一个声明中<br>
+            border-right-color	设置元素的右边框的颜色<br>
+            border-right-style	设置元素的右边框的样式<br>
+            border-right-width	设置元素的右边框的宽度<br>
+            border-top	        简写属性，用于把上边框的所有属性设置到一个声明中<br>
+            border-top-color	设置元素的上边框的颜色<br>
+            border-top-style	设置元素的上边框的样式<br>
+            border-top-width	设置元素的上边框的宽度<br>
+       </div>
+   </div>
+   <!-- 轮廓 -->
+   <div>
+       <div>
+            outline	        在一个声明中设置所有的轮廓属性<br>
+            outline-color	设置轮廓的颜色<br>
+            outline-style	设置轮廓的样式<br>
+            outline-width	设置轮廓的宽度<br>
+       </div>
+   </div>
+   <!-- 外边距、填充 -->
+   <div>
+       <div>
+            margin	        简写属性。在一个声明中设置所有外边距属性<br>
+            margin-bottom	设置元素的下外边距<br>
+            margin-left	    设置元素的左外边距<br>
+            margin-right	设置元素的右外边距<br>
+            margin-top	    设置元素的上外边距<br><br>
+
+            padding	使用简写属性设置在一个声明中的所有填充属性<br><br>
+            padding-bottom	设置元素的底部填充<br>
+            padding-left	设置元素的左部填充<br>
+            padding-right	设置元素的右部填充<br>
+            padding-top	设置元素的顶部填充<br>
+       </div>
+   </div>
+</body>
+</html>

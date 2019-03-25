@@ -63,13 +63,13 @@ button,select,textarea{
 /*canvas 样式*/
 .canvas {
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 .canvas-item {
     box-sizing: border-box;
     width: 100%;
-    height: 300px;
+    height: 400px;
     padding: 20px;
 }
 

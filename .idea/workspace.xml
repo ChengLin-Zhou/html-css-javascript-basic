@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86f103f3-ca2b-4be6-8147-94bed337fbfd" name="Default Changelist" comment="" />
+    <list default="true" id="86f103f3-ca2b-4be6-8147-94bed337fbfd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/html/audio-video/public/css/canvas.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/audio-video/public/css/canvas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/audio-video/public/js/canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/audio-video/public/js/canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/audio-video/views/canvas.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/html/audio-video/views/canvas.ejs" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,10 +19,11 @@
     <session id="1357705829">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -101,6 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,7 +123,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,6 +155,7 @@
       <updated>1552384488892</updated>
       <workItem from="1552384490303" duration="2295000" />
       <workItem from="1552800349085" duration="1294000" />
+      <workItem from="1552891986802" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="html">
       <created>1552800668193</created>
@@ -162,10 +168,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3589000" />
+    <option name="totallyTimeSpent" value="3598000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
