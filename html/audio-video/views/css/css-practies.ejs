@@ -10,6 +10,14 @@
         .css-background {
             background-color: red;
             color: #ffffff; 
+            zoom: 1;
+        }
+        .css-background::after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
         }
         .css-fl {
             float: left;
@@ -101,6 +109,13 @@
         .css-a-style a:active{
             color: yellow
         }
+        /* 尺寸 */
+        .css-size {
+            /* width: 250px;
+            max-width: 200px;
+            min-height: 200px;
+            height: 190px; */
+        }
     </style>
 </head>
 <body>
@@ -117,7 +132,7 @@
                     background-color	    设置元素的背景颜色<br>
                     background-image	    把图像设置为背景<br>
                     background-position	    设置背景图像的起始位置<br>
-                    background-repeat	    设置背景图像是否及如何重复<br>
+                    background-repeat	    设置背景图像是否及如何重复<br><br>
             </div>
        </div>
        <!-- 文本 -->
@@ -145,7 +160,7 @@
             unicode-bidi	设置或返回文本是否被重写 <br>
             vertical-align	设置元素的垂直对齐<br>
             white-space	    设置元素中空白的处理方式<br>
-            word-spacing	设置字间距<br>
+            word-spacing	设置字间距<br><br>
        </div>
    </div> 
    <!-- CSS的字体 -->
@@ -159,7 +174,7 @@
             font-size	    指定文本的字体大小<br>
             font-style	    指定文本的字体样式<br>
             font-variant	以小型大写字体或者正常字体显示文本<br>
-            font-weight	    指定字体的粗细<br>
+            font-weight	    指定字体的粗细<br><br>
         </div>
    </div>
    <!-- CSS链接 -->
@@ -174,7 +189,7 @@
             a:link - 正常，未访问过的链接<br>
             a:visited - 用户已访问过的链接<br>
             a:hover - 当用户鼠标放在链接上时<br>
-            a:active - 链接被点击的那一刻<br>
+            a:active - 链接被点击的那一刻<br><br>
        </div>
    </div>
    <!-- 列表样式 -->
@@ -183,7 +198,7 @@
             list-style	        简写属性。用于把所有用于列表的属性设置于一个声明中<br>
             list-style-image	将图象设置为列表项标志<br>
             list-style-position	设置列表中列表项标志的位置<br>
-            list-style-type	    设置列表项标志的类型<br>
+            list-style-type	    设置列表项标志的类型<br><br>
        </div>
    </div>
    <!-- 盒模型 -->
@@ -198,7 +213,7 @@
             总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距<br>
 
             元素的总高度最终计算公式是这样的：<br>
-            总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距<br>
+            总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距<br><br>
        </div>
    </div>
    <!-- 边框 -->
@@ -223,7 +238,7 @@
             border-top	        简写属性，用于把上边框的所有属性设置到一个声明中<br>
             border-top-color	设置元素的上边框的颜色<br>
             border-top-style	设置元素的上边框的样式<br>
-            border-top-width	设置元素的上边框的宽度<br>
+            border-top-width	设置元素的上边框的宽度<br><br>
        </div>
    </div>
    <!-- 轮廓 -->
@@ -232,7 +247,7 @@
             outline	        在一个声明中设置所有的轮廓属性<br>
             outline-color	设置轮廓的颜色<br>
             outline-style	设置轮廓的样式<br>
-            outline-width	设置轮廓的宽度<br>
+            outline-width	设置轮廓的宽度<br><br>
        </div>
    </div>
    <!-- 外边距、填充 -->
@@ -248,8 +263,134 @@
             padding-bottom	设置元素的底部填充<br>
             padding-left	设置元素的左部填充<br>
             padding-right	设置元素的右部填充<br>
-            padding-top	设置元素的顶部填充<br>
+            padding-top	设置元素的顶部填充<br><br>
        </div>
+   </div>
+   <!-- 分组和嵌套 -->
+   <div>
+       <div>
+            分组：在样式表中有很多具有相同样式的元素，为了尽量减少代码，你可以使用分组选择器。每个选择器用逗号分隔。<br>
+            嵌套：它可能适用于选择器内部的选择器的样式。空格或这大于号可用作嵌套<br><br>
+       </div>
+   </div>
+   <!-- 尺寸 -->
+   <div>
+       <div class="css-size">
+            height	    设置元素的高度<br>
+            line-height	设置行高<br>
+            max-height	设置元素的最大高度<br>
+            max-width	设置元素的最大宽度<br>
+            min-height	设置元素的最小高度<br>
+            min-width	设置元素的最小宽度<br>
+            width	    设置元素的宽度<br><br>
+       </div>
+   </div>
+   <!-- 显示和可见性 -->
+   <div>
+       <div>
+            display：元素如何显示，none不占用空间<br>
+            visibility：元素可见性，hidden隐藏但仍占用空间<br><br>
+       </div>
+   </div>
+   <!-- 定位 -->
+   <div>
+       <div>
+            clip	    剪辑一个绝对定位的元素<br><br>
+            cursor	    显示光标移动到指定的类型<br>
+            overflow    设置当元素的内容溢出其区域时发生的事情<br>
+            overflow-y  指定如何处理顶部/底部边缘的内容溢出元素的内容区域<br>
+            overflow-x  指定如何处理右边/左边边缘的内容溢出元素的内容区域<br>
+            position	指定元素的定位类型	<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;absolute：绝对定位，相对于已经定位的父元素<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;fixed：固定定位<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;relative：相对定位，相对自己位置，移动后原空间不变<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;static：默认<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;sticky： 基于用户的滚动位置来定位<br>
+            right	    定义了定位元素右外边距边界与其包含块右边界之间的偏移<br>
+            top	        定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移<br>
+            bottom	    定义了定位元素下外边距边界与其包含块下边界之间的偏移<br>
+            left	    定义了定位元素左外边距边界与其包含块左边界之间的偏移<br>
+            z-index	    设置元素的堆叠顺序<br><br>
+       </div>
+   </div>
+   <!-- overflow -->
+   <div>
+       <div>
+           overflow：控制内容溢出元素框时显示的方式<br>
+            visible	默认值。内容不会被修剪，会呈现在元素框之外<br>
+            hidden	内容会被修剪，并且其余内容是不可见的<br>
+            scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容<br>
+            auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容<br>
+            inherit	规定应该从父元素继承 overflow 属性的值<br><br>
+       </div>
+   </div>
+   <!-- 浮动 -->
+   <div>
+       <div>
+            clear	指定不允许元素周围有浮动元素<br>
+            float	指定一个盒子（元素）是否可以浮动<br><br>
+
+            四种清除浮动方式：<br><br>
+            1、父级div定义伪类：after和zoom<br>
+            2.在结尾处添加空div标签clear:both<br>
+            3.父级div定义height<br>
+            4.父级div定义overflow:hidden<br><br>
+       </div>
+   </div>
+   <!-- 水平、垂直对齐 -->
+   <div>
+       <div>
+           文字居中对齐：text-align: center<br>
+           元素居中对齐：width: 90%;margin: auto;<br>
+           使用定位来进行对齐<br>
+           使用浮动来进行对齐<br>
+
+           垂直居中对齐方式：<br>
+           使用 padding<br>
+           使用 line-height<br>
+           使用 position 和 transform<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;top: 50%;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;left: 50%;<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;-ms-transform: translate(-50%, -50%);<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;transform: translate(-50%, -50%);<br>
+           <br>
+       </div>
+   </div>
+   <!-- CSS 选择器 -->
+   <div>
+       <h3>id选择器</h3>
+       <div>
+            id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式<br>
+            id {background-color:yellow;}<br>
+       </div>
+       <h3>类class选择器</h3>
+       <div>
+            选择器在HTML中以class属性表示<br>
+            class {background-color:yellow;}<br>
+       </div>
+       <h3>后代选择器(空格分割)</h3>
+       <div>
+            后代选择器用于选取某元素的后代元素<br>
+            div p {background-color:yellow;}<br>
+       </div>
+       <h3>子元素选择器(大于号分割)</h3>
+       <div>
+            与后代选择器相比，子元素选择器只能选择作为某元素子元素的元素<br>
+            div>p {background-color:yellow;}<br>
+       </div>
+       <h3>相邻选择器(加号分割)</h3>
+       <div>
+            相邻兄弟选择器可选择紧接在另一元素后的元素，且二者有相同父元素<br>
+            div+p {background-color:yellow;}<br>
+       </div>
+       <h3>普通兄弟选择器(破折号分割)</h3>
+       <div>
+            后续兄弟选择器选取所有指定元素之后的相邻兄弟元素<br>
+            div~p {background-color:yellow;}<br>
+       </div>
+       <h3>伪类选择器</h3>
+       <h3>伪元素选择器</h3>
    </div>
 </body>
 </html>
