@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 边框</title>
+    <style>
+        .border {
+            width: 100%;
+            height: 800px;
+        }
+        .border-common {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            background: chocolate;
+        }
+        .border-1 {
+            border-style: solid;
+            border-width: 3px;
+            border-color: blue;
+        }
+        .border-2 {
+            border: 3px solid blue; 
+        }
+        .border-3 {
+            border-top-style: solid;
+            border-top-width: 3px;
+            border-top-color: blue;
+        }
+        .border-4 {
+            border-top: 3px solid blue; 
+        }
+        .border-5 {
+            border: 3px solid blue; 
+            border-radius: 5px;
+        }
+        .border-6 {
+            border: 3px solid blue; 
+            border-radius: 5px 20px 5px 20px;
+        }
+        .border-7 {
+            border: 3px solid blue; 
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .border-8 {
+            /*https://www.cnblogs.com/wshiqtb/p/3484521.html 详解*/
+            border: 10px solid transparent;
+            padding: 10px;
+            border-image-source: url('/images/border.png');
+            border-image-slice: 3 5;/*数值默认为像素，百分比是图片的百分比四边大小，裁剪出来的图片放入四个边角不变，剩下的四个边用裁剪后的图片进行展示*/
+            border-image-width: 1;/*宽度，数字是边框倍数*/
+            border-image-outset: 0; /*距离边框的位置偏移，边框倍数*/
+            border-image-repeat: round repeat;/*拉伸、平铺、重复*/
+            border-radius: 5px;
+        }
+        .border-9 {
+            border: 10px solid transparent;
+            padding: 10px;
+            border-image: url('/images/border.png') 0 20 round;
+            -o-border-image: url('/images/border.png') 0 20 round;
+            -webkit-border-image: url('/images/border.png') 0 20 round;
+        }
+        .border-10 {
+            border: 10px solid transparent;
+            padding: 10px;
+            border-image: url('/images/border.png') 0 20 repeat;
+            -o-border-image: url('/images/border.png') 0 20 repeat;
+            -webkit-border-image: url('/images/border.png') 0 20 repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="border">
+        <!-- border border-style border-width border-color简写及整体单独设置 -->
+        <div class="border-common border-1"></div>
+        <div class="border-common border-2"></div>
+        <!-- border-top border-left border-bottom border-right单独边整体设置及单独边整体单独设置 -->
+        <div class="border-common border-3"></div>
+        <div class="border-common border-4"></div>
+        <!-- border-radius圆角设置及单个圆角设置 -->
+        <div class="border-common border-5"></div>
+        <div class="border-common border-6"></div>
+        <div class="border-common border-7"></div>
+        <!-- border-image图像边框 -->
+        <div class="border-common border-8"></div>
+        <div class="border-common border-9"></div>
+        <div class="border-common border-10"></div>
+    </div>
+</body>
+</html>

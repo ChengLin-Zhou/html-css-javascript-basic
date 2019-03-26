@@ -116,9 +116,50 @@
             min-height: 200px;
             height: 190px; */
         }
+        .header {
+            width: 100%;
+            height: 45px;
+            background: #ea47ea;
+        }
+        .nav {
+            width: 100%;
+            height: 100%;
+            zoom: 1;
+        }
+        .nav::after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
+        }
+        .nav ul,li {
+            list-style-type: none;
+        }
+        .nav li a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            line-height: 25px;
+            color: green;
+            text-decoration: none;
+        }
+        .nav li a:hover,.nav li a:active {
+            opacity: .7;
+            color: lawngreen;
+        }
     </style>
 </head>
 <body>
+    <div class="header">
+        <ul class="nav">
+            <li class="css-fl"><a href="#">首页</a></li>
+            <li class="css-fl"><a href="#">娱乐</a></li>
+            <li class="css-fl"><a href="#">游戏</a></li>
+            <li class="css-fl"><a href="#">要闻</a></li>
+            <li class="css-fl"><a href="#">科技</a></li>
+        </ul>
+    </div>
    <div class="css-demo">
        <!-- 设置背景颜色 -->
        <div class="css-background">
@@ -127,12 +168,14 @@
             <div class="css-fl css-b-b3"></div>
             <div class="css-b-b4"></div>
             <div>
+                <pre>
                     background	            简写属性，作用是将背景属性设置在一个声明中<br>
                     background-attachment	背景图像是否固定或者随着页面的其余部分滚动<br>
                     background-color	    设置元素的背景颜色<br>
                     background-image	    把图像设置为背景<br>
                     background-position	    设置背景图像的起始位置<br>
                     background-repeat	    设置背景图像是否及如何重复<br><br>
+                </pre>
             </div>
        </div>
        <!-- 文本 -->
@@ -148,19 +191,21 @@
             </p>
        </div>
        <div>
-            color	        设置文本颜色<br>
-            direction	    设置文本方向<br>
-            letter-spacing	设置字符间距<br>
-            line-height	    设置行高<br>
-            text-align	    对齐元素中的文本<br>
-            text-decoration	向文本添加修饰<br>
-            text-indent	    缩进元素中文本的首行<br>
-            text-shadow	    设置文本阴影<br>
-            text-transform	控制元素中的字母<br>
-            unicode-bidi	设置或返回文本是否被重写 <br>
-            vertical-align	设置元素的垂直对齐<br>
-            white-space	    设置元素中空白的处理方式<br>
-            word-spacing	设置字间距<br><br>
+           <pre>
+                color	        设置文本颜色<br>
+                direction	    设置文本方向<br>
+                letter-spacing	设置字符间距<br>
+                line-height	    设置行高<br>
+                text-align	    对齐元素中的文本<br>
+                text-decoration	向文本添加修饰<br>
+                text-indent	    缩进元素中文本的首行<br>
+                text-shadow	    设置文本阴影<br>
+                text-transform	控制元素中的字母<br>
+                unicode-bidi	设置或返回文本是否被重写 <br>
+                vertical-align	设置元素的垂直对齐<br>
+                white-space	    设置元素中空白的处理方式<br>
+                word-spacing	设置字间距<br><br>
+           </pre> 
        </div>
    </div> 
    <!-- CSS的字体 -->
@@ -169,12 +214,14 @@
            姐姐迪恩你奶奶覅i决定将计就计福建加快可是咳咳咳看看价格接近库萨克酷酷的解放军金额看看数控雕刻机借记卡科技开发就看见
        </div>
         <div>
-            font	        在一个声明中设置所有的字体属性<br>
-            font-family	    指定文本的字体系列<br>
-            font-size	    指定文本的字体大小<br>
-            font-style	    指定文本的字体样式<br>
-            font-variant	以小型大写字体或者正常字体显示文本<br>
-            font-weight	    指定字体的粗细<br><br>
+            <pre>
+                font	        在一个声明中设置所有的字体属性<br>
+                font-family	    指定文本的字体系列<br>
+                font-size	    指定文本的字体大小<br>
+                font-style	    指定文本的字体样式<br>
+                font-variant	以小型大写字体或者正常字体显示文本<br>
+                font-weight	    指定字体的粗细<br><br>
+            </pre>
         </div>
    </div>
    <!-- CSS链接 -->
@@ -186,84 +233,96 @@
             <a href="#">tab4</a>
        </div>
        <div>
-            a:link - 正常，未访问过的链接<br>
-            a:visited - 用户已访问过的链接<br>
-            a:hover - 当用户鼠标放在链接上时<br>
-            a:active - 链接被点击的那一刻<br><br>
+           <pre>
+                a:link - 正常，未访问过的链接<br>
+                a:visited - 用户已访问过的链接<br>
+                a:hover - 当用户鼠标放在链接上时<br>
+                a:active - 链接被点击的那一刻<br><br>
+           </pre>
        </div>
    </div>
    <!-- 列表样式 -->
    <div>
        <div>
-            list-style	        简写属性。用于把所有用于列表的属性设置于一个声明中<br>
-            list-style-image	将图象设置为列表项标志<br>
-            list-style-position	设置列表中列表项标志的位置<br>
-            list-style-type	    设置列表项标志的类型<br><br>
+           <pre>
+                list-style	        简写属性。用于把所有用于列表的属性设置于一个声明中<br>
+                list-style-image	将图象设置为列表项标志<br>
+                list-style-position	设置列表中列表项标志的位置<br>
+                list-style-type	    设置列表项标志的类型<br><br>
+           </pre>
        </div>
    </div>
    <!-- 盒模型 -->
    <div>
        <div>
-            Margin(外边距) - 清除边框外的区域，外边距是透明的<br>
-            Border(边框) - 围绕在内边距和内容外的边框<br>
-            Padding(内边距) - 清除内容周围的区域，内边距是透明的<br>
-            Content(内容) - 盒子的内容，显示文本和图像<br>
-
-            最终元素的总宽度计算公式是这样的：<br>
-            总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距<br>
-
-            元素的总高度最终计算公式是这样的：<br>
-            总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距<br><br>
+           <pre>
+                Margin(外边距) - 清除边框外的区域，外边距是透明的<br>
+                Border(边框) - 围绕在内边距和内容外的边框<br>
+                Padding(内边距) - 清除内容周围的区域，内边距是透明的<br>
+                Content(内容) - 盒子的内容，显示文本和图像<br>
+    
+                最终元素的总宽度计算公式是这样的：<br>
+                总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距<br>
+    
+                元素的总高度最终计算公式是这样的：<br>
+                总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距<br><br>
+           </pre>
        </div>
    </div>
    <!-- 边框 -->
    <div>
        <div>
-            border	            简写属性，用于把针对四个边的属性设置在一个声明<br>
-            border-style	    用于设置元素所有边框的样式，或者单独地为各边设置边框样式<br>
-            border-width	    简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度<br>
-            border-color	    简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色<br>
-            border-bottom	    简写属性，用于把下边框的所有属性设置到一个声明中<br>
-            border-bottom-color	设置元素的下边框的颜色<br>
-            border-bottom-style	设置元素的下边框的样式<br>
-            border-bottom-width	设置元素的下边框的宽度<br>
-            border-left	        简写属性，用于把左边框的所有属性设置到一个声明中<br>
-            border-left-color	设置元素的左边框的颜色<br>
-            border-left-style	设置元素的左边框的样式<br>
-            border-left-width	设置元素的左边框的宽度<br>
-            border-right	    简写属性，用于把右边框的所有属性设置到一个声明中<br>
-            border-right-color	设置元素的右边框的颜色<br>
-            border-right-style	设置元素的右边框的样式<br>
-            border-right-width	设置元素的右边框的宽度<br>
-            border-top	        简写属性，用于把上边框的所有属性设置到一个声明中<br>
-            border-top-color	设置元素的上边框的颜色<br>
-            border-top-style	设置元素的上边框的样式<br>
-            border-top-width	设置元素的上边框的宽度<br><br>
+           <pre>
+                border	            简写属性，用于把针对四个边的属性设置在一个声明<br>
+                border-style	    用于设置元素所有边框的样式，或者单独地为各边设置边框样式<br>
+                border-width	    简写属性，用于为元素的所有边框设置宽度，或者单独地为各边边框设置宽度<br>
+                border-color	    简写属性，设置元素的所有边框中可见部分的颜色，或为 4 个边分别设置颜色<br>
+                border-bottom	    简写属性，用于把下边框的所有属性设置到一个声明中<br>
+                border-bottom-color	设置元素的下边框的颜色<br>
+                border-bottom-style	设置元素的下边框的样式<br>
+                border-bottom-width	设置元素的下边框的宽度<br>
+                border-left	        简写属性，用于把左边框的所有属性设置到一个声明中<br>
+                border-left-color	设置元素的左边框的颜色<br>
+                border-left-style	设置元素的左边框的样式<br>
+                border-left-width	设置元素的左边框的宽度<br>
+                border-right	    简写属性，用于把右边框的所有属性设置到一个声明中<br>
+                border-right-color	设置元素的右边框的颜色<br>
+                border-right-style	设置元素的右边框的样式<br>
+                border-right-width	设置元素的右边框的宽度<br>
+                border-top	        简写属性，用于把上边框的所有属性设置到一个声明中<br>
+                border-top-color	设置元素的上边框的颜色<br>
+                border-top-style	设置元素的上边框的样式<br>
+                border-top-width	设置元素的上边框的宽度<br><br>
+           </pre>
        </div>
    </div>
    <!-- 轮廓 -->
    <div>
        <div>
-            outline	        在一个声明中设置所有的轮廓属性<br>
-            outline-color	设置轮廓的颜色<br>
-            outline-style	设置轮廓的样式<br>
-            outline-width	设置轮廓的宽度<br><br>
+           <pre>
+                outline	        在一个声明中设置所有的轮廓属性<br>
+                outline-color	设置轮廓的颜色<br>
+                outline-style	设置轮廓的样式<br>
+                outline-width	设置轮廓的宽度<br><br>
+           </pre>
        </div>
    </div>
    <!-- 外边距、填充 -->
    <div>
        <div>
-            margin	        简写属性。在一个声明中设置所有外边距属性<br>
-            margin-bottom	设置元素的下外边距<br>
-            margin-left	    设置元素的左外边距<br>
-            margin-right	设置元素的右外边距<br>
-            margin-top	    设置元素的上外边距<br><br>
-
-            padding	使用简写属性设置在一个声明中的所有填充属性<br><br>
-            padding-bottom	设置元素的底部填充<br>
-            padding-left	设置元素的左部填充<br>
-            padding-right	设置元素的右部填充<br>
-            padding-top	设置元素的顶部填充<br><br>
+           <pre>
+                margin	        简写属性。在一个声明中设置所有外边距属性<br>
+                margin-bottom	设置元素的下外边距<br>
+                margin-left	    设置元素的左外边距<br>
+                margin-right	设置元素的右外边距<br>
+                margin-top	    设置元素的上外边距<br><br>
+    
+                padding	使用简写属性设置在一个声明中的所有填充属性<br><br>
+                padding-bottom	设置元素的底部填充<br>
+                padding-left	设置元素的左部填充<br>
+                padding-right	设置元素的右部填充<br>
+                padding-top	设置元素的顶部填充<br><br>
+           </pre>
        </div>
    </div>
    <!-- 分组和嵌套 -->
@@ -276,13 +335,15 @@
    <!-- 尺寸 -->
    <div>
        <div class="css-size">
-            height	    设置元素的高度<br>
-            line-height	设置行高<br>
-            max-height	设置元素的最大高度<br>
-            max-width	设置元素的最大宽度<br>
-            min-height	设置元素的最小高度<br>
-            min-width	设置元素的最小宽度<br>
-            width	    设置元素的宽度<br><br>
+           <pre>
+                height	    设置元素的高度<br>
+                line-height	设置行高<br>
+                max-height	设置元素的最大高度<br>
+                max-width	设置元素的最大宽度<br>
+                min-height	设置元素的最小高度<br>
+                min-width	设置元素的最小宽度<br>
+                width	    设置元素的宽度<br><br>
+           </pre>
        </div>
    </div>
    <!-- 显示和可见性 -->
@@ -295,65 +356,73 @@
    <!-- 定位 -->
    <div>
        <div>
-            clip	    剪辑一个绝对定位的元素<br><br>
-            cursor	    显示光标移动到指定的类型<br>
-            overflow    设置当元素的内容溢出其区域时发生的事情<br>
-            overflow-y  指定如何处理顶部/底部边缘的内容溢出元素的内容区域<br>
-            overflow-x  指定如何处理右边/左边边缘的内容溢出元素的内容区域<br>
-            position	指定元素的定位类型	<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;absolute：绝对定位，相对于已经定位的父元素<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;fixed：固定定位<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;relative：相对定位，相对自己位置，移动后原空间不变<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;static：默认<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;sticky： 基于用户的滚动位置来定位<br>
-            right	    定义了定位元素右外边距边界与其包含块右边界之间的偏移<br>
-            top	        定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移<br>
-            bottom	    定义了定位元素下外边距边界与其包含块下边界之间的偏移<br>
-            left	    定义了定位元素左外边距边界与其包含块左边界之间的偏移<br>
-            z-index	    设置元素的堆叠顺序<br><br>
+           <pre>
+                clip	    剪辑一个绝对定位的元素<br><br>
+                cursor	    显示光标移动到指定的类型<br>
+                overflow    设置当元素的内容溢出其区域时发生的事情<br>
+                overflow-y  指定如何处理顶部/底部边缘的内容溢出元素的内容区域<br>
+                overflow-x  指定如何处理右边/左边边缘的内容溢出元素的内容区域<br>
+                position	指定元素的定位类型	<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;absolute：绝对定位，相对于已经定位的父元素<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;fixed：固定定位<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;relative：相对定位，相对自己位置，移动后原空间不变<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;static：默认<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;sticky： 基于用户的滚动位置来定位<br>
+                right	    定义了定位元素右外边距边界与其包含块右边界之间的偏移<br>
+                top	        定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移<br>
+                bottom	    定义了定位元素下外边距边界与其包含块下边界之间的偏移<br>
+                left	    定义了定位元素左外边距边界与其包含块左边界之间的偏移<br>
+                z-index	    设置元素的堆叠顺序<br><br>
+           </pre>
        </div>
    </div>
    <!-- overflow -->
    <div>
        <div>
-           overflow：控制内容溢出元素框时显示的方式<br>
-            visible	默认值。内容不会被修剪，会呈现在元素框之外<br>
-            hidden	内容会被修剪，并且其余内容是不可见的<br>
-            scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容<br>
-            auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容<br>
-            inherit	规定应该从父元素继承 overflow 属性的值<br><br>
+           <pre>
+                overflow：控制内容溢出元素框时显示的方式<br>
+                visible	默认值。内容不会被修剪，会呈现在元素框之外<br>
+                hidden	内容会被修剪，并且其余内容是不可见的<br>
+                scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容<br>
+                auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容<br>
+                inherit	规定应该从父元素继承 overflow 属性的值<br><br>
+           </pre>
        </div>
    </div>
    <!-- 浮动 -->
    <div>
        <div>
-            clear	指定不允许元素周围有浮动元素<br>
-            float	指定一个盒子（元素）是否可以浮动<br><br>
-
-            四种清除浮动方式：<br><br>
-            1、父级div定义伪类：after和zoom<br>
-            2.在结尾处添加空div标签clear:both<br>
-            3.父级div定义height<br>
-            4.父级div定义overflow:hidden<br><br>
+           <pre>
+                clear	指定不允许元素周围有浮动元素<br>
+                float	指定一个盒子（元素）是否可以浮动<br><br>
+    
+                四种清除浮动方式：<br><br>
+                1、父级div定义伪类：after和zoom<br>
+                2.在结尾处添加空div标签clear:both<br>
+                3.父级div定义height<br>
+                4.父级div定义overflow:hidden<br><br>
+           </pre>
        </div>
    </div>
    <!-- 水平、垂直对齐 -->
    <div>
        <div>
-           文字居中对齐：text-align: center<br>
-           元素居中对齐：width: 90%;margin: auto;<br>
-           使用定位来进行对齐<br>
-           使用浮动来进行对齐<br>
-
-           垂直居中对齐方式：<br>
-           使用 padding<br>
-           使用 line-height<br>
-           使用 position 和 transform<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;top: 50%;<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;left: 50%;<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;-ms-transform: translate(-50%, -50%);<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;transform: translate(-50%, -50%);<br>
+           <pre>
+                文字居中对齐：text-align: center<br>
+                元素居中对齐：width: 90%;margin: auto;<br>
+                使用定位来进行对齐<br>
+                使用浮动来进行对齐<br>
+     
+                垂直居中对齐方式：<br>
+                使用 padding<br>
+                使用 line-height<br>
+                使用 position 和 transform<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: 50%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: 50%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-ms-transform: translate(-50%, -50%);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;transform: translate(-50%, -50%);<br>
+           </pre>
            <br>
        </div>
    </div>
@@ -390,7 +459,297 @@
             div~p {background-color:yellow;}<br>
        </div>
        <h3>伪类选择器</h3>
+       <div>
+           <pre>
+                伪类是用来添加一些选择器的特殊效果<br>
+                d:checked	    input:checked	    选择所有选中的表单元素<br>
+                :disabled	    input:disabled	    选择所有禁用的表单元素<br>
+                :empty	        p:empty	            选择所有没有子元素的p元素<br>
+                :enabled	    input:enabled	    选择所有启用的表单元素<br>
+                :first-of-type	p:first-of-type	    选择的每个 p 元素是其父元素的第一个 p 元素<br>
+                :in-range	    input:in-range	    选择元素指定范围内的值<br>
+                :invalid	    input:invalid	    选择所有无效的元素<br>
+                :last-child	    p:last-child	    选择所有p元素的最后一个子元素<br>
+                :last-of-type	p:last-of-type	    选择每个p元素是其母元素的最后一个p元素<br>
+                :not(selector)	:not(p)	            选择所有p以外的元素<br>
+                :nth-child(n)	p:nth-child(2)	    选择所有 p 元素的父元素的第二个子元素<br>
+                :nth-last-child(n)	p:nth-last-child(2)	选择所有p元素倒数的第二个子元素<br>
+                :nth-last-of-type(n)	p:nth-last-of-type(2)	选择所有p元素倒数的第二个为p的子元素<br>
+                :nth-of-type(n)	p:nth-of-type(2)	选择所有p元素第二个为p的子元素<br>
+                :only-of-type	p:only-of-type	    选择所有仅有一个子元素为p的元素<br>
+                :only-child	    p:only-child	    选择所有仅有一个子元素的p元素<br>
+                :optional	    input:optional	    选择没有"required"的元素属性
+                :out-of-range	input:out-of-range	选择指定范围以外的值的元素属性<br>
+                :read-only	    input:read-only	    选择只读属性的元素属性<br>
+                :read-write	    input:read-write	选择没有只读属性的元素属性<br>
+                :required	    input:required	    选择有"required"属性指定的元素属性<br>
+                :root	        root	            选择文档的根元素<br>
+                :target	        #news:target	    选择当前活动#news元素(点击URL包含锚的名字)<br>
+                :valid	        input:valid	        选择所有有效值的属性<br>
+                :link	        a:link	            选择所有未访问链接<br>
+                :visited	    a:visited	        选择所有访问过的链接<br>
+                :active	        a:active	        选择正在活动链接<br>
+                :hover	        a:hover	            把鼠标放在链接上的状态<br>
+                :focus	        input:focus	        选择元素输入后具有焦点<br>
+                :first-letter	p:first-letter	    选择每个p 元素的第一个字母<br>
+                :first-line	    p:first-line	    选择每个p 元素的第一行<br>
+                :first-child	p:first-child	    选择器匹配属于任意元素的第一个子元素的 p 元素<br>
+                :before	        p:before	        在每个p元素之前插入内容<br>
+                :after	        p:after	            在每个p元素之后插入内容<br>
+                :lang(language)	p:lang(it)	        为p元素的lang属性选择一个开始值<br><br>
+           </pre>
+       </div>
        <h3>伪元素选择器</h3>
+       <div>
+           <pre>
+                用来添加一些选择器的特殊效果<br>
+                :link	        a:link	        选择所有未访问链接<br>
+                :visited	    a:visited	    选择所有访问过的链接<br>
+                :active	        a:active	    选择正在活动链接<br>
+                :hover	        a:hover	        把鼠标放在链接上的状态<br>
+                :focus	        input:focus	    选择元素输入后具有焦点<br>
+                :first-letter	p:first-letter	选择每个p 元素的第一个字母<br>
+                :first-line	    p:first-line	选择每个p 元素的第一行<br>
+                :first-child	p:first-child	选择器匹配属于任意元素的第一个子元素的 p 元素<br>
+                :before	        p:before	    在每个p元素之前插入内容<br>
+                :after	        p:after	        在每个p元素之后插入内容<br>
+                :lang(language)	p:lang(it)	    为p元素的lang属性选择一个开始值<br><br>
+           </pre>
+       </div>
+       <h3>属性选择器</h3>
+       <div>
+           <pre>
+               通过属性进行选择，[attr=value]方式<br>
+                四种选择属性值方式：<br>
+                    (=): 只有一个属性且等于value值
+                    (~=): 属性中包含选择的单词有value值就可以
+                    (|=): 属性中必须是完整且唯一的单词，或者以 - 分隔开
+                    (*=): 属性中做字符串拆分，只要能拆出来 value 这个词就行
+                    (^=): 属性的前几个字母是 value 就可以
+                    ($=): 属性的后几个字母是 value 就可以
+           </pre>
+            
+       </div>
+   </div>
+   <!-- CSS 媒体类型 -->
+   <div>
+       <h3>媒体类型</h3>
+       <div>
+           <pre>
+                all	        用于所有的媒体设备<br>
+                aural	    用于语音和音频合成器<br>
+                braille	    用于盲人用点字法触觉回馈设备<br>
+                embossed	用于分页的盲人用点字法打印机<br>
+                handheld	用于小的手持的设备<br>
+                print	    用于打印机<br>
+                projection	用于方案展示，比如幻灯片<br>
+                screen	    用于电脑显示器<br>
+                tty	        用于使用固定密度字母栅格的媒体，比如电传打字机和终端<br>
+                tv	        用于电视机类型的设备<br>
+                @media screen{.test {font-size:14px;}}
+           </pre>
+            
+       </div>
+   </div>
+   <!-- css3新特性 -->
+   <div>
+       <h3>css3新特性</h3>
+       <pre>
+            选择器
+            盒模型
+            背景和边框
+            文字特效
+            2D/3D转换
+            动画
+            多列布局
+            用户界面
+       </pre>
+   </div>
+   <!-- 边框、圆角、盒阴影 -->
+   <div>
+       <h3>边框、圆角、盒阴影</h3>
+       <div>
+           <pre>
+                border-image	设置所有边框图像的速记属性
+                    border-image-source	用于指定要用于绘制边框的图像的位置
+                    border-image-slice	图像边界向内偏移
+                    border-image-width	图像边界的宽度
+                    border-image-outset	用于指定在边框外部绘制 border-image-area 的量
+                    border-image-repeat	用于设置图像边界是否应重复（repeat）、拉伸（stretch）或铺满（round）
+
+                border-radius	一个用于设置所有四个边框- *-半径属性的速记属性
+                    border-radius	            所有四个边角 border-*-*-radius 属性的缩写
+                    border-top-left-radius	    定义了左上角的弧度
+                    border-top-right-radius	    定义了右上角的弧度
+                    border-bottom-right-radius	定义了右下角的弧度
+                    border-bottom-left-radius	定义了左下角的弧度
+
+                box-shadow	附加一个或多个下拉框的阴影
+                    h-shadow	必需的。水平阴影的位置。允许负值
+                    v-shadow	必需的。垂直阴影的位置。允许负值
+                    blur	    可选。模糊距离
+                    spread	    可选。阴影的大小
+                    color	    可选。阴影的颜色。在CSS颜色值寻找颜色值的完整列表
+                    inset	    可选。从外层的阴影（开始时）改变阴影内侧阴影
+           </pre>
+       </div>
+   </div>
+   <!-- 背景 -->
+   <div>
+       <h3>背景</h3>
+       <div>
+           <pre>
+                background-clip	    规定背景的绘制区域
+                background-origin	规定背景图片的定位区域
+                background-size	    规定背景图片的尺寸
+           </pre>
+       </div>
+   </div>
+   <!-- 渐变 -->
+   <div>
+       <h3>渐变</h3>
+       <pre>
+            linear-gradient：线性渐变
+            radial-gradient：径向渐变
+            repeating-linear-gradient：重复线性渐变
+            repeating-radial-gradient：重复径向渐变
+       </pre>
+   </div>
+   <!-- 文本 -->
+   <div>
+       <h3>文本</h3>
+       <pre>
+            hanging-punctuation	规定标点字符是否位于线框之外
+            punctuation-trim	规定是否对标点字符进行修剪
+            text-align-last	    设置如何对齐最后一行或紧挨着强制换行符之前的行
+            text-emphasis	    向元素的文本应用重点标记以及重点标记的前景色
+            text-justify	    规定当 text-align 设置为 "justify" 时所使用的对齐方法
+            text-outline	    规定文本的轮廓
+            text-overflow	    规定当文本溢出包含元素时发生的事情
+            text-shadow	        向文本添加阴影
+            text-wrap	        规定文本的换行规则
+            word-break	        规定非中日韩文本的换行规则
+            word-wrap	        允许对长的不可分割的单词进行分割并换行到下一行
+       </pre>
+   </div>
+   <!-- 字体 -->
+   <div>
+       <h3>字体</h3>
+       <pre>
+            字体是在 CSS3 @font-face 规则中定义的
+            font-family定义字体名称，src定义字体引用链接
+       </pre>
+   </div>
+   <!-- 2d转换 -->
+   <div>
+       <h3>2d转换</h3>
+       <pre>
+            新转换属性：
+            transform	        适用于2D或3D转换的元素	
+            transform-origin	允许您更改转化元素位置	
+
+            2D 转换方法：
+            matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵
+            translate(x,y)	    定义 2D 转换，沿着 X 和 Y 轴移动元素
+            translateX(n)	    定义 2D 转换，沿着 X 轴移动元素
+            translateY(n)	    定义 2D 转换，沿着 Y 轴移动元素
+            scale(x,y)	        定义 2D 缩放转换，改变元素的宽度和高度
+            scaleX(n)	        定义 2D 缩放转换，改变元素的宽度
+            scaleY(n)	        定义 2D 缩放转换，改变元素的高度
+            rotate(angle)	    定义 2D 旋转，在参数中规定角度
+            skew(x-angle,y-angle)	定义 2D 倾斜转换，沿着 X 和 Y 轴
+            skewX(angle)	    定义 2D 倾斜转换，沿着 X 轴
+            skewY(angle)	    定义 2D 倾斜转换，沿着 Y 轴
+       </pre>
+   </div>
+   <!-- 3d转换 -->
+   <div>
+       <h3>3d转换</h3>
+       <pre>
+            转换属性：
+            transform	        向元素应用 2D 或 3D 转换
+            transform-origin	允许你改变被转换元素的位置
+            transform-style	    规定被嵌套元素如何在 3D 空间中显示
+            perspective	        规定 3D 元素的透视效果
+            perspective-origin	规定 3D 元素的底部位置
+            backface-visibility	定义元素在不面对屏幕时是否可见
+
+            3D 转换方法：
+            matrix3d(n,n,n,n,n,n,
+            n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵
+            translate3d(x,y,z)	    定义 3D 转化
+            translateX(x)	        定义 3D 转化，仅使用用于 X 轴的值
+            translateY(y)	        定义 3D 转化，仅使用用于 Y 轴的值
+            translateZ(z)	        定义 3D 转化，仅使用用于 Z 轴的值
+            scale3d(x,y,z)	        定义 3D 缩放转换
+            scaleX(x)	            定义 3D 缩放转换，通过给定一个 X 轴的值
+            scaleY(y)	            定义 3D 缩放转换，通过给定一个 Y 轴的值
+            scaleZ(z)	            定义 3D 缩放转换，通过给定一个 Z 轴的值
+            rotate3d(x,y,z,angle)	定义 3D 旋转
+            rotateX(angle)	        定义沿 X 轴的 3D 旋转
+            rotateY(angle)	        定义沿 Y 轴的 3D 旋转
+            rotateZ(angle)	        定义沿 Z 轴的 3D 旋转
+            perspective(n)	        定义 3D 转换元素的透视视图
+       </pre>
+   </div>
+   <!-- 过渡 -->
+   <div>
+       <h3>过渡</h3>
+       <pre>
+            transition	                简写属性，用于在一个属性中设置四个过渡属性
+            transition-property	        规定应用过渡的 CSS 属性的名称
+            transition-duration	        定义过渡效果花费的时间。默认是 0
+            transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"
+            transition-delay	        规定过渡效果何时开始。默认是 0
+       </pre>
+   </div>
+   <!-- 动画 -->
+   <div>
+        <h3>动画</h3>
+        <pre>
+            @keyframes	                规定动画
+            animation	                所有动画属性的简写属性，除了 animation-play-state 属性
+            animation-name	            规定 @keyframes 动画的名称
+            animation-duration	        规定动画完成一个周期所花费的秒或毫秒。默认是 0
+            animation-timing-function	规定动画的速度曲线。默认是 "ease"
+            animation-fill-mode	        规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式
+            animation-delay	            规定动画何时开始。默认是 0
+            animation-iteration-count	规定动画被播放的次数。默认是 1
+            animation-direction	        规定动画是否在下一周期逆向地播放。默认是 "normal"
+            animation-play-state	    规定动画是否正在运行或暂停。默认是 "running"
+        </pre>
+   </div>
+   <!-- 多列 -->
+   <div>
+       <h3>多列</h3>
+       <pre>
+            column-count	    指定元素应该被分割的列数
+            column-fill	        指定如何填充列
+            column-gap	        指定列与列之间的间隙
+            column-rule	        所有 column-rule-* 属性的简写
+            column-rule-color	指定两列间边框的颜色
+            column-rule-style	指定两列间边框的样式
+            column-rule-width	指定两列间边框的厚度
+            column-span	        指定元素要跨越多少列
+            column-width	    指定列的宽度
+            columns	            设置 column-width 和 column-count 的简写
+       </pre>
+   </div>
+   <!-- 新用户界面特性 -->
+   <div>
+       <h3>新用户界面特性</h3>
+       <pre>
+            appearance	    允许您使一个元素的外观像一个标准的用户界面元素
+            box-sizing	    允许你以适应区域而用某种方式定义某些元素
+            icon	        为创作者提供了将元素设置为图标等价物的能力
+            nav-down	    指定在何处使用箭头向下导航键时进行导航
+            nav-index	    指定一个元素的Tab的顺序
+            nav-left	    指定在何处使用左侧的箭头导航键进行导航
+            nav-right	    指定在何处使用右侧的箭头导航键进行导航
+            nav-up	        指定在何处使用箭头向上导航键时进行导航
+            outline-offset	外轮廓修饰并绘制超出边框的边缘
+            resize	        指定一个元素是否是由用户调整大小
+       </pre>
    </div>
 </body>
 </html>

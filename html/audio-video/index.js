@@ -78,6 +78,10 @@ app.get('/css-practies', function(req, res) {
     res.render('css/css-practies');
 });
 
+app.get('/css/border', function(req, res) {
+    res.render('css/border');
+});
+
 // app.listen('5050');
 http.listen('5050', function() {
     console.log('server is started');
