@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 文本</title>
+    <style>
+        body,html,p {
+            margin: 0;
+            padding: 0;
+        }
+        .css-text {
+            width: 800px;
+            /* height: 1200px; */
+            margin: auto;
+        }
+        .common {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .text-1 {
+            color: red;
+        }
+        .text-2 {
+            color: blue;
+            direction: rtl;
+        }
+        .text-3 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+        }
+        .text-4 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+        }
+        .text-5 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .text-6 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .text-7 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: overline;
+            text-indent: 5px;
+        }
+        .text-8 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: line-through;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+        }
+        .text-9 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: lowercase;
+        }
+        .text-10 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: uppercase;
+            vertical-align: bottom;
+        }
+        .text-11 {
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: capitalize;
+            vertical-align: middle;
+            white-space: nowrap;
+            /* 
+                pre	        空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签
+                nowrap	    文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止
+                pre-wrap	保留空白符序列，但是正常地进行换行
+                pre-line	合并空白符序列，但是保留换行符
+            */
+        }
+        .text-12 {
+            height: 600px;
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: capitalize;
+            vertical-align: top;
+            white-space: pre-wrap;
+            word-spacing: 2px;
+            unicode-bidi: embed;
+        }
+        .text-13 {
+            height: 600px;
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: capitalize;
+            vertical-align: top;
+            white-space: pre-line;
+            word-spacing: 5px;
+            unicode-bidi: bidi-override;
+        }
+        .text-14 {
+            height: 600px;
+            color: red;
+            direction: ltr;
+            letter-spacing: 3px;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: blink;
+            text-indent: 2%;
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 3px green;
+            text-transform: capitalize;
+            vertical-align: top;
+            white-space: pre;
+            word-spacing: 5px;
+            unicode-bidi: bidi-override;
+        }
+        .text-15 {
+            /* height: 150px; */
+            color: red;
+            line-height: 30px;  
+            /* overflow: hidden;
+            white-space: nowrap; */
+            /* 
+                clip	修剪文本
+                ellipsis	显示省略符号来代表被修剪的文本
+                string	使用给定的字符串来代表被修剪的文本 
+            */
+            text-overflow: ellipsis;
+            word-break: normal;
+        }
+        .text-16 {
+            /* height: 150px; */
+            color: red;
+            line-height: 30px;
+            /* 
+                clip	修剪文本
+                ellipsis	显示省略符号来代表被修剪的文本
+                string	使用给定的字符串来代表被修剪的文本 
+
+                一行内有效，需配合overflow:hidden和white-space:nowrap有效
+            */
+            /* overflow: hidden;
+            white-space: nowrap; */
+            text-overflow: clip;
+            word-break: keep-all
+        }
+        .text-17 {
+            /* height: 150px; */
+            color: red;
+            line-height: 30px;
+            /* 
+                clip	修剪文本
+                ellipsis	显示省略符号来代表被修剪的文本
+                string	使用给定的字符串来代表被修剪的文本 
+            */
+            /* overflow: hidden;
+            white-space: nowrap;
+            text-overflow: 'lue'; */
+            word-break: break-all;
+            word-wrap: break-word;
+            text-align: justify;
+            text-align-last: right;
+            /* font-style font-variant font-weight font-size/line-height font-family */
+            font: normal small-caps bold 20px serif;
+            /* 如何拉伸字体 */
+            font-stretch: condensed;
+        }
+        /* 自定义字体
+        @font-face
+        {
+            font-family: myFirstFont; 名称
+            src: url(sansation_light.woff); 引用字体文件地址
+        } */
+    </style>
+</head>
+<body>
+    <div class="css-text">
+        <!-- 文本颜色、方向、字符间距、行高、对齐方式、装饰、首行缩进、文本阴影、控制元素中字母、垂直对齐、空白处理方式、字间距、文本是否被重写 -->
+        <p class="common text-1">这里是文本颜色，this is text color</p>
+        <p class="common text-2">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction
+        </p>
+        <p class="common text-3">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing
+        </p>
+        <p class="common text-4">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing</p>
+        <p class="common text-5">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height
+        </p>
+        <p class="common text-6">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align
+        </p>
+        <p class="common text-7">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration
+        </p>
+        <p class="common text-8">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent
+        </p>
+        <p class="common text-9">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow
+        </p>
+        <p class="common text-10">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform
+        </p>
+        <p class="common text-11">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+        </p>
+        <p class="common text-12">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+        </p>
+        <p class="common text-13">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+            字间距 word-spacing
+        </p>
+        <p class="common text-14">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+            字间距 word-spacing
+        </p>
+        <!-- 
+            text-flow：当文本溢出包含元素时发生的事情
+            text-wrap：文本的换行规则
+            word-break：非中日韩文本的换行规则
+            word-wrap：允许对长的不可分割的单词进行分割并换行到下一行
+            text-outline：文本的轮廓
+            text-justify：规定当 text-align 设置为 "justify" 时所使用的对齐方法
+            text-emphasis：向元素的文本应用重点标记以及重点标记的前景色
+            text-align-last：设置如何对齐最后一行或紧挨着强制换行符之前的行
+            punctuation-trim：规定是否对标点字符进行修剪
+            hanging-punctuation：规定标点字符是否位于线框之外
+        -->
+        <p class="common text-15">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+            字间距 word-spacing
+        </p>
+        <p class="common text-16">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+            字间距 word-spacing
+        </p>
+        <p class="common text-17">
+            这里是文本颜色，this is text color；
+            还有文字方向，also text direction；
+            还有字符间距，also text letter spacing；
+            行高line height;
+            对齐方式 text align；
+            装饰 text decoration；
+            首行缩进 text indent；
+            文本阴影 text shadow；
+            控制元素中字母 text transform；
+            垂直对齐 vertical align
+            元素中空白处理方式 white-space
+            字间距 word-spacing
+        </p>
+    </div>
+</body>
+</html>

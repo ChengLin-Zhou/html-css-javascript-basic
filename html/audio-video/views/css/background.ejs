@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 背景</title>
+    <style>
+        body,html {
+            margin: 0;
+            padding: 0;
+        }
+        .background {
+            width: 800px;
+            height: 1600px;
+            margin: auto;
+            border: 2px solid blueviolet;
+            background: #fff;
+        }
+        .common-b {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            border: 5px dotted chartreuse;
+            padding: 10px;
+        }
+        .background-1 {
+            background: blue;
+        }
+        .background-2 {
+            background-color: blue;
+            /* background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: 10% 10%;
+            background-size: 50% 50%;  针对图像*/
+        }
+        .background-3 {
+            background: blue url('/images/4g.png') no-repeat 0 0;
+        }
+        .background-4 {
+            background: blue;
+            background-origin: border-box;
+        }
+        .background-5 {
+            background: blue;
+            background-origin: content-box;
+        }
+        .background-6 {
+            background: blue;
+            background-origin: padding-box;
+        }
+        .background-7 {
+            background: blue;
+            background-clip: border-box;
+        }
+        .background-8 {
+            background: blue;
+            background-clip: padding-box;
+        }
+        .background-9 {
+            background: blue;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <!-- background\background-color\background-image\background-repeat\background-attachment\background-position整体及分别设置 -->
+        <div class="common-b background-1"></div>
+        <div class="common-b background-2"></div>
+        <!-- background-clip\background-origin\background-size -->
+        <div class="common-b background-3"></div>
+        <div class="common-b background-4"></div>
+        <div class="common-b background-5"></div>
+        <div class="common-b background-6"></div>
+        <div class="common-b background-7"></div>
+        <div class="common-b background-8"></div>
+        <div class="common-b background-9"></div>
+    </div>
+</body>
+</html>

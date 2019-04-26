@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 2d/3d转换\过渡</title>
+    <style>
+        body,html,p {
+            margin: 0;
+            padding: 0;
+        }
+        .transform {
+            width: 800px;
+            height: auto;
+            margin: auto;
+        }
+        .common {
+            width: 100px;
+            height: 100px;
+            background: green;
+            color: azure;
+            font-size: 18px;
+            margin-bottom: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .transform-1 {
+            transform: translate(50px,0);
+            transform-origin: 5% 5%;
+        }
+        .transform-2 {
+            transform: scale(1.5,1.5);
+            transform-origin: 5% 5%;
+        }
+        .transform-3 {
+            transform: rotate(90deg);
+            transform-origin: 50% 50%;
+        }
+        .transform-4 {
+            transform: skew(20deg, 30deg);
+            transform-origin: 50% 50%;
+        }
+        .transform-5 {
+            /* https://www.cnblogs.com/cc156676/p/5784629.html 详解 */
+            transform: matrix(1,0,0,1,10,10);
+            transform-origin: 50% 50%;
+        }
+        .transform-6 {
+            transform: translate3d(50px,0,0);
+            transform-origin: 5% 5%;
+        }
+        .transform-7 {
+            transform: scale3d(1.5,1.5,1.5);
+            transform-origin: 5% 5%;
+        }
+        .transform-8 {
+            transform: rotateX(45deg);
+            /* transform: rotateY(45deg); */
+            transform-origin: 50% 50%;
+            backface-visibility: visible;
+            transform-style: preserve-3d;
+            perspective:150;
+        }
+        .transform-9 {
+            transform: perspective(1);
+            transform-origin: 50% 50%;
+        }
+        .transform-10 {
+            /* https://www.cnblogs.com/cc156676/p/5784629.html 详解 */
+            /* transform: matrix(1,0,0,1,10,10); */
+            /* transform-origin: 50% 50%; */
+        }
+        .transform-11 {
+            transition: width 2s ease 1s, transform 1s ease-in;
+        }
+        .transform-11:hover {
+            width: 300px;
+            transform: translate(20px, 20px);
+        }
+        .transform-12 {
+            animation: myAni 1s ease-in infinite alternate;
+        }
+        @keyframes myAni {
+            from {
+                transform: scale(1.2) translate(20px, 20px);
+            }
+            to {
+                transform: scale(0.8) translate(-20px, -20px)
+            }
+        }
+        @keyframes myAni1 {
+            0% {
+                transform: scale(1.2) translate(20px, 20px);
+            }
+            25% {
+                transform: scale(0.8) translate(-20px, -20px)
+            }
+            100% {
+                transform: scale(0.8) translate(-20px, -20px)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="transform">
+        <!-- 2d转换 transform\transform-origin两个转换方法-->
+        <div class="common transform-1">2d转换-移动translate</div>
+        <div class="common transform-2">2d转换-缩放scale</div>
+        <div class="common transform-3">2d转换-旋转rotate</div>
+        <div class="common transform-4">2d转换-倾斜skew</div>
+        <div class="common transform-5">2d转换-matrix六个参数，包含旋转，缩放，移动（平移）和倾斜功能</div>
+        <!-- 3d转换 -->
+        <div class="common transform-6">3d转换-移动translate3d</div>
+        <div class="common transform-7">3d转换-缩放scale3d</div>
+        <div class="common transform-8">3d转换-旋转rotate3d</div>
+        <div class="common transform-9">3d转换-透视perspective</div>
+        <div class="common transform-10">3d转换-matrix十六个参数</div>
+        <!-- 
+            transform	        向元素应用 2D 或 3D 转换
+            transform-origin	允许你改变被转换元素的位置
+            transform-style	    规定被嵌套元素如何在 3D 空间中显示
+            perspective	        规定 3D 元素的透视效果
+            perspective-origin	规定 3D 元素的底部位置
+            backface-visibility	定义元素在不面对屏幕时是否可见
+         -->
+         <!-- 过渡 -->
+         <div class="common transform-11">过渡-transition</div>
+         <!-- 
+             transition	简写属性，用于在一个属性中设置四个过渡属性
+             transition-property	规定应用过渡的 CSS 属性的名称
+             transition-duration	定义过渡效果花费的时间。默认是 0
+             transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"
+             transition-delay	规定过渡效果何时开始。默认是 0
+          -->
+          <!-- 动画 -->
+          <div class="common transform-12">动画-animation</div>
+          <!-- 
+                @keyframes	                规定动画
+                animation	                所有动画属性的简写属性，除了 animation-play-state 属性
+                animation-name	            规定 @keyframes 动画的名称
+                animation-duration	        规定动画完成一个周期所花费的秒或毫秒。默认是 0
+                animation-timing-function	规定动画的速度曲线。默认是 "ease"
+                animation-fill-mode	        规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式
+                animation-delay	            规定动画何时开始。默认是 0
+                animation-iteration-count	规定动画被播放的次数。默认是 1
+                animation-direction	        规定动画是否在下一周期逆向地播放。默认是 "normal"
+                animation-play-state	    规定动画是否正在运行或暂停。默认是 "running"
+           -->
+    </div>
+</body>
+</html>

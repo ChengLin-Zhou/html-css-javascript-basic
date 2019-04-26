@@ -82,6 +82,26 @@ app.get('/css/border', function(req, res) {
     res.render('css/border');
 });
 
+app.get('/css/background', function(req, res) {
+    res.render('css/background');
+});
+
+app.get('/css/gradient', function(req, res) {
+    res.render('css/gradient');
+});
+
+app.get('/css/text', function(req, res) {
+    res.render('css/text');
+});
+
+app.get('/css/transform', function(req, res) {
+    res.render('css/transform');
+});
+
+app.get('/css/column', function(req, res) {
+    res.render('css/column');
+});
+
 // app.listen('5050');
 http.listen('5050', function() {
     console.log('server is started');

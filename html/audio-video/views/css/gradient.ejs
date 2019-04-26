@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 渐变</title>
+    <style>
+        body,html {
+            margin: 0;
+            padding: 0;
+        }
+        .gradient {
+            width: 100%;
+            height: 800px;
+        }
+        .common {
+            width: 200px;
+            height: 100px;
+            margin: 20px auto;
+        }
+        .gradient-1 {
+            background: linear-gradient(blue, green, red);
+        }
+        .gradient-2 {
+            background: linear-gradient(to left, blue, green, red);
+        }
+        .gradient-3 {
+            background: linear-gradient(to top, blue, green, red);
+        }
+        .gradient-4 {
+            background: -webkit-linear-gradient(left top, red , blue); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(bottom right, red, blue); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(bottom right, red, blue); /* Firefox 3.6 - 15 */
+            background: linear-gradient(to left top, blue, green, red);
+        }
+        .gradient-5 {
+            background: linear-gradient(120deg, blue, green, red);
+        }
+        .gradient-6 {
+            background: linear-gradient(120deg, rgba(255,255,2,1), rgba(125.212,2,0.7), rgba(111,0,12,0.5));
+        }
+        .gradient-7 {
+            background: repeating-linear-gradient(120deg, blue 10%, green 10%, red 20%);
+        }
+        .gradient-8 {
+            background: radial-gradient(blue, green, red);
+        }
+        .gradient-9 {
+            background: radial-gradient(blue 20%, green 20%, red 60%);
+        }
+        .gradient-10 {
+            background: radial-gradient(circle , blue, green, red);
+        }
+        .gradient-11 {
+            background: -webkit-radial-gradient(60% 55%, closest-side,blue,green,yellow,black); /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(60% 55%, closest-side,blue,green,yellow,black); /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(60% 55%, closest-side,blue,green,yellow,black); /* Firefox 3.6 - 15 */
+            background: radial-gradient(60% 55%, closest-side,blue,green,yellow,black);
+        }
+        .gradient-12 {
+            background: radial-gradient(60% 55%, farthest-side,blue,green,yellow,black);
+        }
+        .gradient-13 {
+            background: radial-gradient(60% 55%, closest-corner, blue, green, red);
+        }
+        .gradient-14 {
+            background: radial-gradient(60% 55%, farthest-corner, blue, green, red);
+        }
+        .gradient-15 {
+            background: repeating-radial-gradient(blue 10%, green 10%, red);
+        }
+        .gradient-16 {
+            font-size: 30px;
+            color: linear-gradient(blue, green, red);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient">
+        <!-- 线性渐变：linear-gradient、repeating-linear-gradient -->
+        <!-- 默认 -->
+        <div class="common gradient-1"></div>
+        <!-- 方向 -->
+        <div class="common gradient-2"></div>
+        <div class="common gradient-3"></div>
+        <div class="common gradient-4"></div>
+        <!-- 角度 -->
+        <div class="common gradient-5"></div>
+        <!-- 透明度 -->
+        <div class="common gradient-6"></div>
+        <!-- 重复线性渐变 -->
+        <div class="common gradient-7"></div>
+        <!-- 径向渐变 -->
+        <div class="common gradient-8"></div>
+        <div class="common gradient-9"></div>
+        <div class="common gradient-10"></div>
+        <!-- 不同尺寸大小关键字的径向渐变 -->
+        <div class="common gradient-11"></div>
+        <div class="common gradient-12"></div>
+        <div class="common gradient-13"></div>
+        <div class="common gradient-14"></div>
+        <!-- 重复 -->
+        <div class="common gradient-15"></div>
+        <!-- 不支持文字颜色 -->
+        <div class="common gradient-16">中过jjjj</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 多列/用户界面</title>
+    <style>
+        body,html,p,h1,h2,h3,h4,h5,h6 {
+            margin: 0px;
+            padding: 0px;
+        }
+        .common {
+            width: 800px;
+            height: 300px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .column-1 {
+            column-count: 3;
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -o-column-count: 3;
+
+            column-gap: 20px;
+            -webkit-column-gap: 20px;
+            -moz-column-gap: 20px;
+            -o-column-gap: 20px;
+        }
+        .column-2 {
+            column-count: 3;
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -o-column-count: 3;
+
+            column-gap: 20px;
+            -webkit-column-gap: 20px;
+            -moz-column-gap: 20px;
+            -o-column-gap: 20px;
+
+            column-rule-style: dotted;
+            column-rule-color: aqua;
+            column-rule-width: 3px;
+            column-fill: balance;
+        }
+        .column-3 {
+            column-count: 3;
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -o-column-count: 3;
+
+            column-gap: 20px;
+            -webkit-column-gap: 20px;
+            -moz-column-gap: 20px;
+            -o-column-gap: 20px;
+        }
+        .no-column {
+            column-span: all;
+        }
+        .resize-1 {
+            resize: both;
+            border: 1px solid #f4f4f4;
+            overflow: auto;
+        }
+        .outline-1 {
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            margin: 20px auto;
+            border: 1px solid red;
+            outline: 2px solid green;
+            outline-offset: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        column-count	    指定元素应该被分割的列数。
+        column-fill	        指定如何填充列
+        column-gap	        指定列与列之间的间隙
+        column-rule	        所有 column-rule-* 属性的简写
+        column-rule-color	指定两列间边框的颜色
+        column-rule-style	指定两列间边框的样式
+        column-rule-width	指定两列间边框的厚度
+        column-span	        指定元素要跨越多少列
+        column-width	    指定列的宽度
+        columns	            设置 column-width 和 column-count 的简写
+     -->
+     <!-- 多列 -->
+     <div class="common column-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem rerum totam necessitatibus eius, quod beatae odio doloribus debitis soluta ducimus illum, quam, facilis nobis sit voluptas eum quis sequi? Accusamus.</div>
+     <div class="common column-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem rerum totam necessitatibus eius, quod beatae odio doloribus debitis soluta ducimus illum, quam, facilis nobis sit voluptas eum quis sequi? Accusamus.</div>
+     <div class="common column-3">
+         <h6 class="no-column">this is the column span 3 col we can see the word not column</h6>
+         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem rerum totam necessitatibus eius, quod beatae odio doloribus debitis soluta ducimus illum, quam, facilis nobis sit voluptas eum quis sequi? Accusamus.
+     </div>
+     <!-- resize 用户界面 配合overflow使用 用户能否自行调整元素大小 -->
+     <div class="common resize-1">this is the column span 3 col we can see the word not column</div>
+     <!-- outline-offset 轮廓偏移 -->
+     <div class="outline-1">this is outline offset</div>
+     <!-- 
+         appearance	    允许您使一个元素的外观像一个标准的用户界面元素
+         box-sizing	    允许你以适应区域而用某种方式定义某些元素
+            border-box设置的宽高包含padding和border|content-box传统盒模型
+         icon	        为创作者提供了将元素设置为图标等价物的能力
+         nav-down	    指定在何处使用箭头向下导航键时进行导航
+         nav-index	    指定一个元素的Tab的顺序
+         nav-left	    指定在何处使用左侧的箭头导航键进行导航
+         nav-right	    指定在何处使用右侧的箭头导航键进行导航
+         nav-up	        指定在何处使用箭头向上导航键时进行导航
+         outline-offset	外轮廓修饰并绘制超出边框的边缘
+         resize	        指定一个元素是否是由用户调整大小
+      -->
+    </body>
+</html>
