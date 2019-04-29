@@ -107,3 +107,71 @@ let {aaaa: aaaa = 10, bbbb: bbbb = 5} = {aaaa: 3};
 console.log(aaaa);
 console.log(bbbb);
 // aa = 3; bb = 5;
+
+
+/**
+ * symbol类型，原始类型
+ * 创建一个独一无二的值
+ * 最大的用法是用来定义对象的唯一属性名
+ * Symbol 值作为属性名时，该属性是公有属性不是私有属性，可以在类的外部访问
+ * 但是不会出现在 for...in 、 for...of 的循环中，也不会被 Object.keys() 、 Object.getOwnPropertyNames() 返回
+ * 可以通过 Object.getOwnPropertySymbols() 和 Reflect.ownKeys() 取到
+ */
+
+let sy = Symbol('order');
+console.log(sy);
+let sy1 = Symbol('order');
+console.log(sy == sy1);
+
+// 用做对象属性名
+let symbolObj = {
+    [sy1]: 'sex'
+};
+symbolObj[sy] = 'color';
+// symbolObj.sy1 = 'sex';
+console.log(symbolObj.sy);
+console.log(symbolObj[sy]);
+console.log(symbolObj);
+
+
+// 定义常量 普通类型 不能保证常量唯一性 但是通过Symbol定义就能保证值的唯一性
+const COLOR_RED = Symbol("red");
+const COLOR_YELLOW = Symbol("yellow");
+const COLOR_BLUE = Symbol("blue");
+const COLOR_RET = Symbol("red");
+ 
+function getConstantName(color) {
+    switch (color) {
+        case COLOR_RED :
+            console.log("COLOR_RED");
+            break;
+        case COLOR_YELLOW :
+            console.log("COLOR_YELLOW ");
+            break;
+        case COLOR_BLUE:
+            console.log("COLOR_BLUE");
+            break;
+        default:
+            console.log('Can\'t find this color');
+    }
+}
+
+getConstantName(COLOR_RED);
+console.log(COLOR_RED == COLOR_RET);
+
+// Symbol.for()
+// 类似单例模式，首先会在全局搜索被登记的 Symbol 中是否有该字符串参数作为名称的 Symbol 值
+// 如果有即返回该 Symbol 值，若没有则新建并返回一个以该字符串参数为名称的 Symbol 值，并登记在全局环境中供搜索
+let yellow = Symbol("Yellow");
+let yellow1 = Symbol.for("Yellow");
+console.log(yellow === yellow1);      // false
+ 
+let yellow2 = Symbol.for("Yellow");
+console.log(yellow1 === yellow2);     // true
+
+
+// Symbol.keyFor()
+// 返回一个已登记的 Symbol 类型值的 key ，用来检测该字符串参数作为名称的 Symbol 值是否已被登记
+let yellow3 = Symbol.for("Yellow");
+Symbol.keyFor(yellow3);    // "Yellow"
+console.log(Symbol.keyFor(yellow3));
