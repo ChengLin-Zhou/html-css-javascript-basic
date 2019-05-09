@@ -23,6 +23,9 @@ if(1) {
  * 针对数组或者对象进行模式匹配，然后对其中的变量进行赋值
  * 方便了复杂对象中数据字段获取
  * 左边为解构目标，右边为解构源
+ * 
+ * 对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者
+ * 对象的解构赋值可以取到继承的属性
  */
 // 解构数组
 let [a, b, c] = [1, 2, 3];
@@ -175,3 +178,90 @@ console.log(yellow1 === yellow2);     // true
 let yellow3 = Symbol.for("Yellow");
 Symbol.keyFor(yellow3);    // "Yellow"
 console.log(Symbol.keyFor(yellow3));
+
+
+/** 
+ * Map和Set
+ * Map 对象保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值
+ * Map和Objects的区别：
+ * 一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值
+ * Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是
+ * Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算
+ * Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突
+*/
+
+let myMap = new Map();
+let keyString = "a string";
+
+myMap.set(keyString, "键值为a string");
+console.log(myMap.get(keyString));
+console.log(myMap.get("a string"));
+
+let keyObj = {};
+let keyFun = function() {};
+let keyNan = Number('foo');
+let keyNum = 1;
+
+myMap.set(keyObj, '键值是{}');
+myMap.set(keyFun, '键值是fun');
+myMap.set(keyNan, '键值是Nan');
+myMap.set(keyNum, '键值是1');
+
+console.log(myMap.get(keyObj));
+console.log(myMap.get({}));// {}不等于keyObj
+console.log(myMap.get(keyFun));
+console.log(myMap.get(function(){}));
+console.log(myMap.get(keyNan));
+console.log(myMap.get(NaN));
+console.log(myMap.get(keyNum));
+
+
+// Map迭代
+for(var [keyV, valueN] of myMap) {
+    console.log('key: ' + keyV + ' - ' + valueN);
+}
+
+/* entries 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的 [key, value] 数组 */
+for(var [keyV, valueN] of myMap.entries()) {
+    console.log('key: ' + keyV + ' - ' + valueN);
+}
+
+/* keys 方法返回一个新的 Iterator 对象， 它按插入顺序包含了 Map 对象中每个元素的键 */
+for (var key of myMap.keys()) {
+    console.log(key);
+}
+
+/* values 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的值 */
+for (var value of myMap.values()) {
+    console.log(value);
+}
+
+myMap.forEach(function(value, key) {
+    console.log(key + " = " + value);
+}, myMap)
+
+
+// Map 与 Array的转换
+var kvArray = [["key1", "value1"], ["key2", "value2"]];
+ 
+// Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+var myMap1 = new Map(kvArray);
+console.log(myMap1);
+ 
+// 使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组
+var outArray = Array.from(myMap1);
+console.log(outArray);
+
+// Map 的克隆
+var myMap2 = new Map([["key1", "value1"], ["key2", "value2"]]);
+var myMap3 = new Map(myMap2);
+ 
+console.log(myMap2 === myMap3); 
+
+// Map 的合并
+var first = new Map([[1, 'one'], [2, 'two'], [3, 'three'],]);
+var second = new Map([[1, 'uno'], [2, 'dos']]);
+ 
+// 合并两个 Map 对象时，如果有重复的键值，则后面的会覆盖前面的，对应值即 uno，dos， three
+var merged = new Map([...first, ...second]);
+console.log(merged);
